@@ -3,6 +3,10 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     AMPERSAND
+    AND_ASSIGN
+    AND_NOT
+    BIT_OR
+    BIT_XOR
     BREAK
     CASE
     CONTINUE
@@ -13,16 +17,24 @@ Unused terminals:
     GO
     INTERFACE
     LBRACKET
+    LSHIFT
+    LSHIFT_ASSIGN
     MINUS_ASSIGN
+    MOD_ASSIGN
+    OR_ASSIGN
     PLUS_ASSIGN
+    RAW_STRING
     RBRACKET
     RETURN
+    RSHIFT
+    RSHIFT_ASSIGN
     STAR
     STRUCT
     SWITCH
     TIMES_ASSIGN
     TYPE
     UMINUS
+    XOR_ASSIGN
 
 Grammar
 
@@ -91,7 +103,11 @@ Terminals, with rules where they appear
 
 AMPERSAND            : 
 AND                  : 39
+AND_ASSIGN           : 
+AND_NOT              : 
 ASSIGN               : 6 7 22
+BIT_OR               : 
+BIT_XOR              : 
 BREAK                : 
 CASE                 : 
 COMMA                : 11 31
@@ -121,20 +137,27 @@ LBRACE               : 5 27 28
 LBRACKET             : 
 LE                   : 44
 LPAREN               : 5 30 54
+LSHIFT               : 
+LSHIFT_ASSIGN        : 
 LT                   : 43
 MINUS                : 35 47
 MINUS_ASSIGN         : 
 MODULO               : 38
+MOD_ASSIGN           : 
 NE                   : 42
 NOT                  : 48
 OR                   : 40
+OR_ASSIGN            : 
 PACKAGE              : 4
 PLUS                 : 34
 PLUS_ASSIGN          : 
+RAW_STRING           : 
 RBRACE               : 5 27 28
 RBRACKET             : 
 RETURN               : 
 RPAREN               : 5 30 54
+RSHIFT               : 
+RSHIFT_ASSIGN        : 
 SEMI                 : 57
 STAR                 : 
 STRING_LITERAL       : 8 53
@@ -150,6 +173,7 @@ T_INT                : 23
 T_STRING             : 25
 UMINUS               : 
 VAR                  : 6 22
+XOR_ASSIGN           : 
 error                : 
 
 Nonterminals, with rules where they appear

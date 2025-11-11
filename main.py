@@ -1,92 +1,248 @@
-# main.py - Orquestador y Clase Principal
-
+# goparser.py - Analizador Sintáctico para Go (Golang)
+import ply.yacc as yacc
 import sys
-# Importamos las herramientas de análisis
-from golex import lexer
-from goYacc import parse_code
+
+# Importar el léxico (golex.py/golexer.py)
+try:
+    # Nota: Se asume que el archivo del léxico se llama golex.py o golexer.py
+    # y la variable del lexer es 'lexer'.
+    from golex import tokens, lexer
+except ImportError:
+    sys.stderr.write("Error: No se pudo importar golexer.py. Asegúrate de la ruta.\n")
+    tokens = []
+
+# Tabla de Símbolos Placeholder (para futura implementación semántica)
+symbol_table = {}
+
+# 1. Precedencia y Asociatividad
+precedence = (
+    ('left', 'OR'),
+    ('left', 'AND'),
+    ('nonassoc', 'EQ', 'NE', 'LT', 'LE', 'GT', 'GE'),
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'TIMES', 'DIVIDE', 'MODULO'),
+    ('right', 'UMINUS', 'NOT'),
+)
 
 
-def run_lexical_analysis(code):
+# 2. Reglas Gramaticales (Producciones BNF)
+
+# Símbolo inicial
+def p_program(p):
     """
-    Ejecuta solo el análisis léxico y muestra los tokens.
+    program : top_declaration_list
     """
-    print("\n--- INICIANDO ANÁLISIS LÉXICO ---")
-    lexer.input(code)
-    tokens_list = []
+    print(f"[INFO SINTÁCTICO] Estructura del programa verificada. Total de declaraciones de alto nivel.")
+    p[0] = p[1]
 
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        tokens_list.append(f"Tipo: {tok.type:<15} Valor: {repr(tok.value):<15} Línea: {tok.lineno}")
+def p_top_declaration_list(p):
+    """
+    top_declaration_list : top_declaration top_declaration_list
+                         | top_declaration
+    """
+    p[0] = [p[1]] + p[2] if len(p) == 3 else [p[1]]
 
-    # Reiniciar el lexer para el sintáctico si fuera necesario
-    lexer.lineno = 1
-    lexer.lexpos = 0
+def p_top_declaration(p):
+    """
+    top_declaration : PACKAGE ID SEMI_OPTIONAL
+                    | FUNC ID LPAREN param_list RPAREN func_return LBRACE statement_list RBRACE
+                    | VAR ID type_spec ASSIGN expression SEMI_OPTIONAL
+                    | CONST ID ASSIGN expression SEMI_OPTIONAL
+                    | IMPORT STRING_LITERAL SEMI_OPTIONAL
+    """
+    # ACCIÓN SEMÁNTICA: Registrar la función o variable global.
+    p[0] = p[1]
 
-    if tokens_list:
-        print("Tokens Encontrados:")
-        print("\n".join(tokens_list))
+# Regla de función (Simplificación de la propuesta)
+def p_func_return(p):
+    """
+    func_return : type_spec
+                | empty
+    """
+    pass
+
+# Regla de lista de parámetros (necesaria para la función)
+def p_param_list(p):
+    """
+    param_list : param COMMA param_list
+               | param
+               | empty
+    """
+    pass
+
+def p_param(p):
+    """
+    param : ID type_spec
+    """
+    pass
+
+def p_statement_list(p):
+    """
+    statement_list : statement statement_list
+                   | empty
+    """
+    # Si la longitud es 3 (statement statement_list), construye la lista. Si es 1 (empty), es una lista vacía [].
+    p[0] = [p[1]] + p[2] if len(p) == 3 else []
+
+
+def p_statement(p):
+    """
+    statement : declaration SEMI_OPTIONAL
+              | control_structure
+              | expression SEMI_OPTIONAL
+              | print_statement SEMI_OPTIONAL
+    """
+    p[0] = p[1]
+
+# --- Declaración de Variables ---
+def p_declaration_short(p):
+    """
+    declaration : ID DECLARE_ASSIGN expression
+    """
+    print(f"[INFO SINTÁCTICO] Declaración corta verificada: {p[1]} := ...")
+    p[0] = p[1]
+
+def p_declaration_long(p):
+    """
+    declaration : VAR ID type_spec ASSIGN expression
+    """
+    print(f"[INFO SINTÁCTICO] Declaración larga verificada: var {p[2]} ...")
+    p[0] = p[2]
+
+def p_type_spec(p):
+    """
+    type_spec : T_INT
+              | T_FLOAT
+              | T_STRING
+              | T_BOOL
+    """
+    p[0] = p[1]
+
+# --- Estructuras de Control ---
+def p_control_structure_if(p):
+    """
+    control_structure : IF expression LBRACE statement_list RBRACE else_part
+    """
+    print("[INFO SINTÁCTICO] Estructura IF-ELSE verificada.")
+    p[0] = True
+
+def p_else_part(p):
+    """
+    else_part : ELSE LBRACE statement_list RBRACE
+              | empty
+    """
+    pass
+
+# --- Impresión (Necesaria para fmt.Println) ---
+def p_print_statement(p):
+    """
+    print_statement : ID DOT ID LPAREN arg_list RPAREN
+    """
+    # Simple check para fmt.Println
+    if p[1] == 'fmt' and p[3] == 'Println':
+        print(f"[INFO SINTÁCTICO] Llamada a 'fmt.Println' verificada.")
     else:
-        print("No se encontraron tokens válidos.")
-    print("--- ANÁLISIS LÉXICO FINALIZADO ---\n")
-    return tokens_list
+        # Aquí se debería manejar una llamada a función genérica.
+        print(f"[INFO SINTÁCTICO] Llamada a función genérica verificada: {p[1]}.{p[3]}(...)")
+    p[0] = p[1]
 
-
-def run_syntax_analysis(code):
+def p_arg_list(p):
     """
-    Ejecuta el análisis sintáctico.
+    arg_list : expression COMMA arg_list
+             | expression
+             | empty
     """
-    print("\n--- INICIANDO ANÁLISIS SINTÁCTICO ---")
+    pass
 
-    # parse_code() llamará al parser y manejará los errores.
-    success = parse_code(code)
+# --- Expresiones (Aritméticas/Lógicas/Factores) ---
 
-    if success:
-        print("\n ÉXITO: El análisis sintáctico completó sin errores.")
+# Regla de expresión principal: incluye operaciones y factores
+def p_expression(p):
+    """
+    expression : expression PLUS expression
+               | expression MINUS expression
+               | expression TIMES expression
+               | expression DIVIDE expression
+               | expression MODULO expression
+               | expression AND expression
+               | expression OR expression
+               | expression EQ expression
+               | expression NE expression
+               | expression LT expression
+               | expression LE expression
+               | expression GT expression
+               | expression GE expression
+               | MINUS expression %prec UMINUS
+               | NOT expression
+               | factor
+    """
+    # ACCIÓN SEMÁNTICA: Se realizaría la verificación de tipos aquí.
+    if len(p) == 4:
+        p[0] = (p[2], p[1], p[3]) # Estructura para el árbol
+    elif len(p) == 3:
+        p[0] = (p[1], p[2]) # Unarios
     else:
-        print("\n FALLO: Se encontraron errores sintácticos en el código.")
-    print("--- ANÁLISIS SINTÁCTICO FINALIZADO ---\n")
+        p[0] = p[1]
 
-
-def main():
+# Factores: los elementos más básicos de las expresiones
+def p_factor(p):
     """
-    Función principal que simula la interacción con el usuario/GUI.
+    factor : INTEGER
+           | FLOAT
+           | ID
+           | STRING_LITERAL
+           | LPAREN expression RPAREN
+           | TRUE
+           | FALSE
     """
-    print("====================================================")
-    print(" ANALIZADOR LÉXICO Y SINTÁCTICO DE GO (PLY)")
-    print("====================================================\n")
+    if len(p) == 4:
+        p[0] = p[2] # ( expression )
+    else:
+        p[0] = p[1] # Literal, ID, TRUE, FALSE
 
-    # Algoritmo de prueba (Ejemplo de un integrante)
-    codigo_go_ejemplo = """
-package main 
+# Regla de sincronización para el punto y coma (Go lo infiere o se puede escribir)
+def p_semi_optional(p):
+    """
+    SEMI_OPTIONAL : SEMI
+                  | empty
+    """
+    pass
 
-import "fmt"
-
-func main() {
-    var contador int = 100;
-    
-    // Pruebas léxicas y sintácticas de expresiones
-    x := 5 + 3.14 * (10 % 2);
-
-    if x < 10 && contador == 100 {
-        fmt.Println("Todo OK"); 
-    } else {
-        otro := 10;
-        // La sentencia "otro := 10;" es una declaración corta.
-    }
-}
-"""
-    print("CÓDIGO DE ENTRADA:\n------------------------------------")
-    print(codigo_go_ejemplo)
-    print("------------------------------------\n")
-
-    # 1. Ejecutar Fase Léxica
-    run_lexical_analysis(codigo_go_ejemplo)
-
-    # 2. Ejecutar Fase Sintáctica
-    run_syntax_analysis(codigo_go_ejemplo)
+def p_empty(p):
+    'empty :'
+    p[0] = None
 
 
-if __name__ == '__main__':
-    main()
+# 3. Manejo de Errores
+def p_error(p):
+    """
+    Regla de manejo de errores sintácticos.
+    """
+    global syntax_error_flag
+    syntax_error_flag = True
+
+    if p:
+        print(f"*** ERROR SINTÁCTICO *** Línea {p.lineno}, cerca de '{p.value}' (Token: {p.type}).")
+        # Modo pánico: intenta descartar tokens hasta encontrar una llave de cierre o EOF
+        while True:
+            # Tok.type es None si llegamos al final del archivo
+            tok = parser.token()
+            if not tok or tok.type == 'RBRACE' or tok.type == 'SEMI':
+                break
+        parser.errok()
+        return tok
+    else:
+        print("*** ERROR SINTÁCTICO *** Error al final del archivo (EOF). Código incompleto.")
+
+
+# 4. Construcción del Parser
+parser = yacc.yacc()
+syntax_error_flag = False
+
+# Función que main.py usará
+def parse_code(code):
+    """Resetea el estado de error y analiza el código."""
+    global syntax_error_flag
+    syntax_error_flag = False
+    parser.parse(code)
+    return not syntax_error_flag

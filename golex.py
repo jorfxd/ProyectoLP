@@ -16,6 +16,12 @@ reserved = {
 tokens = [
     'ID', 'INTEGER', 'FLOAT', 'STRING_LITERAL',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MODULO',
+    #Guillermo Teran
+    'BIT_OR', 'BIT_XOR', 'AND_NOT', 'LSHIFT', 'RSHIFT',
+    'OR_ASSIGN', 'XOR_ASSIGN', 'AND_ASSIGN', 'LSHIFT_ASSIGN', 'RSHIFT_ASSIGN', 'MOD_ASSIGN',
+    'RAW_STRING',
+    'STRING_LITERAL',
+    #Fin Guillermo Teran
     'EQUALS', 'ASSIGN', 'PLUS_ASSIGN', 'MINUS_ASSIGN', 'TIMES_ASSIGN', 'DIVIDE_ASSIGN',
     'DECLARE_ASSIGN',  # :=
     'EQ', 'NE', 'LT', 'LE', 'GT', 'GE',
@@ -25,6 +31,10 @@ tokens = [
     'AMPERSAND', 'STAR',
     'UMINUS'
 ] + list(reserved.values())
+
+# Lista global para almacenar errores léxicos detectados
+ERRORS = []
+
 
 # 3. Reglas para Tokens Simples (Strings)
 t_DECLARE_ASSIGN = r':='
@@ -55,6 +65,22 @@ t_SEMI = r';'
 t_COMMA = r','
 t_DOT = r'\.'
 t_AMPERSAND = r'\&'
+
+# --- Operadores bit a bit de Go ---
+t_AND_NOT        = r'&\^'
+t_LSHIFT         = r'<<'
+t_RSHIFT         = r'>>'
+
+t_BIT_OR         = r'\|'     # OR bit a bit
+t_BIT_XOR        = r'\^'     # XOR
+
+# Asignaciones compuestas bitwise
+t_MOD_ASSIGN     = r'%='
+t_AND_ASSIGN     = r'&='
+t_OR_ASSIGN      = r'\|='
+t_XOR_ASSIGN     = r'\^='
+t_LSHIFT_ASSIGN  = r'<<='
+t_RSHIFT_ASSIGN  = r'>>='
 
 # 4. Reglas con Acción (Funciones)
 def t_ID(t):
@@ -94,9 +120,16 @@ def t_newline(t):
 t_ignore = ' \t'
 
 def t_error(t):
-    # Se añade la posición (lexpos) para mejor diagnóstico.
-    print(f"*** ERROR LÉXICO *** [Línea {t.lineno}, Columna {t.lexpos}] Carácter ilegal: '{t.value[0]}'")
+    msg = f"*** ERROR LÉXICO *** [Línea {t.lineno}, Columna {t.lexpos}] Carácter ilegal: '{t.value[0]}'"
+    print(msg)
+    ERRORS.append(msg)
     t.lexer.skip(1)
+
+def t_RAW_STRING(t):
+    r'`[^`]*`'
+    t.value = t.value[1:-1]
+    return t
+
 
 # Construir el lexer (se exporta como variable global)
 lexer = lex.lex()
