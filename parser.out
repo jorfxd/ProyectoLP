@@ -1,0 +1,195 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AMPERSAND
+    AND_ASSIGN
+    AND_NOT
+    BIT_OR
+    BIT_XOR
+    BREAK
+    CASE
+    CONTINUE
+    DEFAULT
+    DIVIDE_ASSIGN
+    FOR
+    GO
+    INTERFACE
+    LBRACKET
+    LSHIFT
+    LSHIFT_ASSIGN
+    MINUS_ASSIGN
+    MOD_ASSIGN
+    OR_ASSIGN
+    PLUS_ASSIGN
+    RBRACKET
+    RETURN
+    RSHIFT
+    RSHIFT_ASSIGN
+    STRUCT
+    SWITCH
+    TIMES_ASSIGN
+    TYPE
+    XOR_ASSIGN
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> top_declaration_list
+Rule 2     top_declaration_list -> top_declaration top_declaration_list
+Rule 3     top_declaration_list -> top_declaration
+Rule 4     top_declaration -> PACKAGE ID SEMI_OPTIONAL
+Rule 5     top_declaration -> FUNC ID LPAREN param_list RPAREN func_return LBRACE statement_list RBRACE
+Rule 6     top_declaration -> VAR ID type_spec ASSIGN expression SEMI_OPTIONAL
+Rule 7     top_declaration -> CONST ID ASSIGN expression SEMI_OPTIONAL
+Rule 8     top_declaration -> IMPORT STRING_LITERAL SEMI_OPTIONAL
+Rule 9     func_return -> type_spec
+Rule 10    func_return -> empty
+Rule 11    param_list -> param COMMA param_list
+Rule 12    param_list -> param
+Rule 13    param_list -> empty
+Rule 14    param -> ID type_spec
+Rule 15    statement_list -> statement statement_list
+Rule 16    statement_list -> empty
+Rule 17    statement -> declaration SEMI_OPTIONAL
+Rule 18    statement -> control_structure
+Rule 19    statement -> expression SEMI_OPTIONAL
+Rule 20    statement -> print_statement SEMI_OPTIONAL
+Rule 21    declaration -> ID DECLARE_ASSIGN expression
+Rule 22    declaration -> VAR ID type_spec ASSIGN expression
+Rule 23    type_spec -> T_INT
+Rule 24    type_spec -> T_FLOAT
+Rule 25    type_spec -> T_STRING
+Rule 26    type_spec -> T_BOOL
+Rule 27    control_structure -> IF expression LBRACE statement_list RBRACE else_part
+Rule 28    else_part -> ELSE LBRACE statement_list RBRACE
+Rule 29    else_part -> empty
+Rule 30    print_statement -> ID DOT ID LPAREN arg_list RPAREN
+Rule 31    arg_list -> expression COMMA arg_list
+Rule 32    arg_list -> expression
+Rule 33    arg_list -> empty
+Rule 34    expression -> expression PLUS expression
+Rule 35    expression -> expression MINUS expression
+Rule 36    expression -> expression TIMES expression
+Rule 37    expression -> expression DIVIDE expression
+Rule 38    expression -> expression MODULO expression
+Rule 39    expression -> expression AND expression
+Rule 40    expression -> expression OR expression
+Rule 41    expression -> expression EQ expression
+Rule 42    expression -> expression NE expression
+Rule 43    expression -> expression LT expression
+Rule 44    expression -> expression LE expression
+Rule 45    expression -> expression GT expression
+Rule 46    expression -> expression GE expression
+Rule 47    expression -> MINUS expression
+Rule 48    expression -> NOT expression
+Rule 49    expression -> factor
+Rule 50    factor -> INTEGER
+Rule 51    factor -> FLOAT
+Rule 52    factor -> ID
+Rule 53    factor -> STRING_LITERAL
+Rule 54    factor -> LPAREN expression RPAREN
+Rule 55    factor -> TRUE
+Rule 56    factor -> FALSE
+Rule 57    factor -> RAW_STRING
+Rule 58    factor -> RUNE_LITERAL
+Rule 59    SEMI_OPTIONAL -> SEMI
+Rule 60    SEMI_OPTIONAL -> empty
+Rule 61    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AMPERSAND            : 
+AND                  : 39
+AND_ASSIGN           : 
+AND_NOT              : 
+ASSIGN               : 6 7 22
+BIT_OR               : 
+BIT_XOR              : 
+BREAK                : 
+CASE                 : 
+COMMA                : 11 31
+CONST                : 7
+CONTINUE             : 
+DECLARE_ASSIGN       : 21
+DEFAULT              : 
+DIVIDE               : 37
+DIVIDE_ASSIGN        : 
+DOT                  : 30
+ELSE                 : 28
+EQ                   : 41
+FALSE                : 56
+FLOAT                : 51
+FOR                  : 
+FUNC                 : 5
+GE                   : 46
+GO                   : 
+GT                   : 45
+ID                   : 4 5 6 7 14 21 22 30 30 52
+IF                   : 27
+IMPORT               : 8
+INTEGER              : 50
+INTERFACE            : 
+LBRACE               : 5 27 28
+LBRACKET             : 
+LE                   : 44
+LPAREN               : 5 30 54
+LSHIFT               : 
+LSHIFT_ASSIGN        : 
+LT                   : 43
+MINUS                : 35 47
+MINUS_ASSIGN         : 
+MODULO               : 38
+MOD_ASSIGN           : 
+NE                   : 42
+NOT                  : 48
+OR                   : 40
+OR_ASSIGN            : 
+PACKAGE              : 4
+PLUS                 : 34
+PLUS_ASSIGN          : 
+RAW_STRING           : 57
+RBRACE               : 5 27 28
+RBRACKET             : 
+RETURN               : 
+RPAREN               : 5 30 54
+RSHIFT               : 
+RSHIFT_ASSIGN        : 
+SEMI                 : 59
+STRING_LITERAL       : 8 53
+STRUCT               : 
+SWITCH               : 
+TIMES                : 36
+TIMES_ASSIGN         : 
+TRUE                 : 55
+TYPE                 : 
+T_BOOL               : 26
+T_FLOAT              : 24
+T_INT                : 23
+T_STRING             : 25
+VAR                  : 6 22
+XOR_ASSIGN           : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+RUNE_LITERAL         : 58
+SEMI_OPTIONAL        : 4 6 7 8 17 19 20
+arg_list             : 30 31
+control_structure    : 18
+declaration          : 17
+else_part            : 27
+empty                : 10 13 16 29 33 60
+expression           : 6 7 19 21 22 27 31 32 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 48 54
+factor               : 49
+func_return          : 5
+param                : 11 12
+param_list           : 5 11
+print_statement      : 20
+program              : 0
+statement            : 15
+statement_list       : 5 15 27 28
+top_declaration      : 2 3
+top_declaration_list : 1 2
+type_spec            : 6 9 14 22
+
