@@ -14,22 +14,35 @@ reserved = {
 
 # 2. Lista de Nombres de Tokens
 tokens = [
-    'ID', 'INTEGER', 'FLOAT', 'STRING_LITERAL',
+    'ID', 'INTEGER', 'FLOAT',
+    'STRING_LITERAL', 'RAW_STRING',
+
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MODULO',
-    #Guillermo Teran
+
+    # Operadores bit a bit (tu aporte)
     'BIT_OR', 'BIT_XOR', 'AND_NOT', 'LSHIFT', 'RSHIFT',
-    'OR_ASSIGN', 'XOR_ASSIGN', 'AND_ASSIGN', 'LSHIFT_ASSIGN', 'RSHIFT_ASSIGN', 'MOD_ASSIGN',
-    'RAW_STRING',
-    'STRING_LITERAL',
-    #Fin Guillermo Teran
-    'EQUALS', 'ASSIGN', 'PLUS_ASSIGN', 'MINUS_ASSIGN', 'TIMES_ASSIGN', 'DIVIDE_ASSIGN',
+
+    # Asignaciones compuestas (incluye las bitwise)
+    'OR_ASSIGN', 'XOR_ASSIGN', 'AND_ASSIGN',
+    'LSHIFT_ASSIGN', 'RSHIFT_ASSIGN', 'MOD_ASSIGN',
+    'PLUS_ASSIGN', 'MINUS_ASSIGN', 'TIMES_ASSIGN', 'DIVIDE_ASSIGN',
+
+    # Asignación simple
+    'ASSIGN',
+
+    # Comparadores
     'DECLARE_ASSIGN',  # :=
     'EQ', 'NE', 'LT', 'LE', 'GT', 'GE',
+
+    # Lógicos
     'NOT', 'AND', 'OR',
-    'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE', 'LBRACKET', 'RBRACKET',
+
+    # Símbolos varios
+    'LPAREN', 'RPAREN',
+    'LBRACE', 'RBRACE',
+    'LBRACKET', 'RBRACKET',
     'SEMI', 'COMMA', 'DOT',
-    'AMPERSAND', 'STAR',
-    'UMINUS'
+    'AMPERSAND',
 ] + list(reserved.values())
 
 # Lista global para almacenar errores léxicos detectados
@@ -37,50 +50,57 @@ ERRORS = []
 
 
 # 3. Reglas para Tokens Simples (Strings)
-t_DECLARE_ASSIGN = r':='
-t_EQ = r'=='
-t_NE = r'!='
-t_LE = r'<='
-t_GE = r'>='
-t_LT = r'<'
-t_GT = r'>'
-t_PLUS_ASSIGN = r'\+='
-# ... (Otras asignaciones)
-t_ASSIGN = r'='
-t_PLUS = r'\+'
-t_MINUS = r'-'
-t_TIMES = r'\*'
-t_DIVIDE = r'/'
-t_MODULO = r'%'
-t_NOT = r'!'
-t_AND = r'\&\&'
-t_OR = r'\|\|'
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_LBRACE = r'\{'
-t_RBRACE = r'\}'
-t_LBRACKET = r'\['
-t_RBRACKET = r'\]'
-t_SEMI = r';'
-t_COMMA = r','
-t_DOT = r'\.'
-t_AMPERSAND = r'\&'
+# =========================
+# Operadores y asignaciones
+# =========================
 
-# --- Operadores bit a bit de Go ---
-t_AND_NOT        = r'&\^'
-t_LSHIFT         = r'<<'
-t_RSHIFT         = r'>>'
-
-t_BIT_OR         = r'\|'     # OR bit a bit
-t_BIT_XOR        = r'\^'     # XOR
-
-# Asignaciones compuestas bitwise
+# 1) Asignaciones compuestas (primero las de varios caracteres)
+t_LSHIFT_ASSIGN  = r'<<='
+t_RSHIFT_ASSIGN  = r'>>='
+t_PLUS_ASSIGN    = r'\+='
+t_MINUS_ASSIGN   = r'-='
+t_TIMES_ASSIGN   = r'\*='
+t_DIVIDE_ASSIGN  = r'/='
 t_MOD_ASSIGN     = r'%='
 t_AND_ASSIGN     = r'&='
 t_OR_ASSIGN      = r'\|='
 t_XOR_ASSIGN     = r'\^='
-t_LSHIFT_ASSIGN  = r'<<='
-t_RSHIFT_ASSIGN  = r'>>='
+
+# 2) Comparadores y operadores de 2 caracteres
+t_DECLARE_ASSIGN = r':='
+t_EQ             = r'=='
+t_NE             = r'!='
+t_LE             = r'<='
+t_GE             = r'>='
+
+t_AND            = r'\&\&'
+t_OR             = r'\|\|'
+
+t_AND_NOT        = r'&\^'
+t_LSHIFT         = r'<<'
+t_RSHIFT         = r'>>'
+
+# 3) Operadores de un solo carácter
+t_ASSIGN    = r'='
+t_LT        = r'<'
+t_GT        = r'>'
+t_PLUS      = r'\+'
+t_MINUS     = r'-'
+t_TIMES     = r'\*'
+t_DIVIDE    = r'/'
+t_MODULO    = r'%'
+t_NOT       = r'!'
+
+t_AMPERSAND = r'\&'
+t_LPAREN    = r'\('
+t_RPAREN    = r'\)'
+t_LBRACE    = r'\{'
+t_RBRACE    = r'\}'
+t_LBRACKET  = r'\['
+t_RBRACKET  = r'\]'
+t_SEMI      = r';'
+t_COMMA     = r','
+t_DOT       = r'\.'
 
 # 4. Reglas con Acción (Funciones)
 def t_ID(t):

@@ -194,6 +194,8 @@ def p_factor(p):
            | LPAREN expression RPAREN
            | TRUE
            | FALSE
+           | RAW_STRING
+           | RUNE_LITERAL
     """
     if len(p) == 4:
         p[0] = p[2] # ( expression )

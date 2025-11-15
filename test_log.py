@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from golex import lexer, ERRORS  # Importamos el lexer y la lista de errores léxicos
+
 # Intentamos importar el parser desde el archivo correcto
 goparser = None
 for candidate in ("goparser", "main", "goYacc", "parser"):
@@ -12,6 +13,7 @@ for candidate in ("goparser", "main", "goYacc", "parser"):
         break
     except Exception:
         pass
+
 
 def scan_tokens(text):
     """Escanea tokens y devuelve una lista con información detallada."""
@@ -47,16 +49,12 @@ def main():
     text = src_path.read_text(encoding='utf-8')
     tokens_info = scan_tokens(text)
 
-    # Ejecutar parser si se solicita
     parsed_ok = None
     if args.parse:
-        parsed_ok = None
-        if args.parse:
-            if goparser is not None and hasattr(goparser, "parse_code"):
-                parsed_ok = goparser.parse_code(text)
-            else:
-                print(
-                    "AVISO: no se encontró una función parse_code en tu módulo de parser; se omitirá el análisis sintáctico.")
+        if goparser is not None and hasattr(goparser, "parse_code"):
+            parsed_ok = goparser.parse_code(text)
+        else:
+            print("AVISO: no se encontró parse_code; se omite análisis sintáctico.")
 
     # Crear carpeta /logs si no existe
     logs_dir = Path('logs')

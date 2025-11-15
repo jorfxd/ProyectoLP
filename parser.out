@@ -12,7 +12,6 @@ Unused terminals:
     CONTINUE
     DEFAULT
     DIVIDE_ASSIGN
-    EQUALS
     FOR
     GO
     INTERFACE
@@ -28,12 +27,10 @@ Unused terminals:
     RETURN
     RSHIFT
     RSHIFT_ASSIGN
-    STAR
     STRUCT
     SWITCH
     TIMES_ASSIGN
     TYPE
-    UMINUS
     XOR_ASSIGN
 
 Grammar
@@ -120,7 +117,6 @@ DIVIDE_ASSIGN        :
 DOT                  : 30
 ELSE                 : 28
 EQ                   : 41
-EQUALS               : 
 FALSE                : 56
 FLOAT                : 51
 FOR                  : 
@@ -159,7 +155,6 @@ RPAREN               : 5 30 54
 RSHIFT               : 
 RSHIFT_ASSIGN        : 
 SEMI                 : 57
-STAR                 : 
 STRING_LITERAL       : 8 53
 STRUCT               : 
 SWITCH               : 
@@ -171,7 +166,6 @@ T_BOOL               : 26
 T_FLOAT              : 24
 T_INT                : 23
 T_STRING             : 25
-UMINUS               : 
 VAR                  : 6 22
 XOR_ASSIGN           : 
 error                : 
