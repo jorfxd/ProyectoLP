@@ -1,0 +1,70 @@
+Archivo: algoritmoTeran.go
+Usuario: jorfxd
+Fecha: 17-11-2025-19h19
+
+--- TOKENS ---
+
+PACKAGE         line=1    pos=0      value=package
+ID              line=1    pos=8      value=main
+IMPORT          line=3    pos=14     value=import
+STRING_LITERAL  line=3    pos=21     value=fmt
+FUNC            line=5    pos=28     value=func
+ID              line=5    pos=33     value=main
+LPAREN          line=5    pos=37     value=(
+RPAREN          line=5    pos=38     value=)
+LBRACE          line=5    pos=40     value={
+VAR             line=6    pos=46     value=var
+ID              line=6    pos=50     value=x
+INT_TYPE        line=6    pos=52     value=int
+ASSIGN          line=6    pos=56     value==
+INTEGER         line=6    pos=58     value=10
+ID              line=7    pos=65     value=y
+DECLARE_ASSIGN  line=7    pos=67     value=:=
+INTEGER         line=7    pos=70     value=20
+ID              line=9    pos=106    value=z
+DECLARE_ASSIGN  line=9    pos=108    value=:=
+LPAREN          line=9    pos=111    value=(
+ID              line=9    pos=112    value=x
+ID              line=9    pos=116    value=y
+RPAREN          line=9    pos=117    value=)
+LPAREN          line=9    pos=121    value=(
+ID              line=9    pos=122    value=y
+AND_NOT         line=9    pos=124    value=&^
+ID              line=9    pos=127    value=x
+RPAREN          line=9    pos=128    value=)
+ID              line=10   pos=134    value=z
+LSHIFT_ASSIGN   line=10   pos=136    value=<<=
+INTEGER         line=10   pos=140    value=1
+IF              line=11   pos=146    value=if
+ID              line=11   pos=149    value=x
+LT              line=11   pos=151    value=<
+ID              line=11   pos=153    value=y
+LBRACE          line=11   pos=155    value={
+FMT             line=12   pos=165    value=fmt
+DOT             line=12   pos=168    value=.
+ID              line=12   pos=169    value=Println
+LPAREN          line=12   pos=176    value=(
+STRING_LITERAL  line=12   pos=177    value=hola
+COMMA           line=12   pos=183    value=,
+ID              line=12   pos=185    value=x
+PLUS            line=12   pos=186    value=+
+ID              line=12   pos=187    value=y
+COMMA           line=12   pos=188    value=,
+ID              line=12   pos=190    value=z
+RPAREN          line=12   pos=191    value=)
+RBRACE          line=13   pos=197    value=}
+ELSE            line=13   pos=199    value=else
+LBRACE          line=13   pos=204    value={
+FMT             line=14   pos=214    value=fmt
+DOT             line=14   pos=217    value=.
+ID              line=14   pos=218    value=Println
+LPAREN          line=14   pos=225    value=(
+RAW_STRING      line=14   pos=226    value=chao
+RPAREN          line=14   pos=232    value=)
+RBRACE          line=15   pos=238    value=}
+RBRACE          line=16   pos=240    value=}
+
+--- ERRORES LÉXICOS ---
+
+*** ERROR LÉXICO *** [Línea 9, Columna 114] Carácter ilegal: '|'
+*** ERROR LÉXICO *** [Línea 9, Columna 119] Carácter ilegal: '^'

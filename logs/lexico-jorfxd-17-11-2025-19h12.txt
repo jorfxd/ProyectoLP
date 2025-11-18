@@ -1,0 +1,1262 @@
+Archivo: golex.py
+Usuario: jorfxd
+Fecha: 17-11-2025-19h12
+
+--- TOKENS ---
+
+ID              line=1    pos=2      value=golexer
+DOT             line=1    pos=9      value=.
+ID              line=1    pos=10     value=py
+MINUS           line=1    pos=13     value=-
+ID              line=1    pos=15     value=Analizador
+ID              line=1    pos=26     value=L
+ID              line=1    pos=28     value=xico
+ID              line=1    pos=33     value=para
+ID              line=1    pos=38     value=Go
+LPAREN          line=1    pos=41     value=(
+ID              line=1    pos=42     value=Golang
+RPAREN          line=1    pos=48     value=)
+IMPORT          line=2    pos=50     value=import
+ID              line=2    pos=57     value=ply
+DOT             line=2    pos=60     value=.
+ID              line=2    pos=61     value=lex
+ID              line=2    pos=65     value=as
+ID              line=2    pos=68     value=lex
+EQ              line=4    pos=75     value===
+EQ              line=4    pos=77     value===
+EQ              line=4    pos=79     value===
+EQ              line=4    pos=81     value===
+EQ              line=4    pos=83     value===
+EQ              line=4    pos=85     value===
+EQ              line=4    pos=87     value===
+EQ              line=4    pos=89     value===
+EQ              line=4    pos=91     value===
+EQ              line=4    pos=93     value===
+EQ              line=4    pos=95     value===
+EQ              line=4    pos=97     value===
+ASSIGN          line=4    pos=99     value==
+FLOAT           line=5    pos=103    value=1.0
+ID              line=5    pos=106    value=Palabras
+ID              line=5    pos=115    value=Reservadas
+EQ              line=6    pos=128    value===
+EQ              line=6    pos=130    value===
+EQ              line=6    pos=132    value===
+EQ              line=6    pos=134    value===
+EQ              line=6    pos=136    value===
+EQ              line=6    pos=138    value===
+EQ              line=6    pos=140    value===
+EQ              line=6    pos=142    value===
+EQ              line=6    pos=144    value===
+EQ              line=6    pos=146    value===
+EQ              line=6    pos=148    value===
+EQ              line=6    pos=150    value===
+ASSIGN          line=6    pos=152    value==
+ID              line=7    pos=154    value=reserved
+ASSIGN          line=7    pos=163    value==
+LBRACE          line=7    pos=165    value={
+PACKAGE         line=8    pos=172    value=package
+ID              line=8    pos=183    value=PACKAGE
+COMMA           line=8    pos=191    value=,
+IMPORT          line=9    pos=198    value=import
+ID              line=9    pos=208    value=IMPORT
+COMMA           line=9    pos=215    value=,
+FUNC            line=10   pos=222    value=func
+ID              line=10   pos=230    value=FUNC
+COMMA           line=10   pos=235    value=,
+VAR             line=11   pos=242    value=var
+ID              line=11   pos=249    value=VAR
+COMMA           line=11   pos=253    value=,
+CONST           line=12   pos=260    value=const
+ID              line=12   pos=269    value=CONST
+COMMA           line=12   pos=275    value=,
+TYPE            line=13   pos=282    value=type
+ID              line=13   pos=290    value=TYPE
+COMMA           line=13   pos=295    value=,
+IF              line=14   pos=302    value=if
+ID              line=14   pos=308    value=IF
+COMMA           line=14   pos=311    value=,
+ELSE            line=15   pos=318    value=else
+ID              line=15   pos=326    value=ELSE
+COMMA           line=15   pos=331    value=,
+FOR             line=16   pos=338    value=for
+ID              line=16   pos=345    value=FOR
+COMMA           line=16   pos=349    value=,
+RETURN          line=17   pos=356    value=return
+ID              line=17   pos=366    value=RETURN
+COMMA           line=17   pos=373    value=,
+FMT             line=18   pos=380    value=fmt
+ID              line=18   pos=387    value=FMT
+COMMA           line=18   pos=391    value=,
+ID              line=20   pos=400    value=Tipos
+INT_TYPE        line=21   pos=411    value=int
+ID              line=21   pos=418    value=INT_TYPE
+COMMA           line=21   pos=427    value=,
+FLOAT_TYPE      line=22   pos=434    value=float64
+ID              line=22   pos=445    value=FLOAT_TYPE
+COMMA           line=22   pos=456    value=,
+BOOL_TYPE       line=23   pos=463    value=bool
+ID              line=23   pos=471    value=BOOL_TYPE
+COMMA           line=23   pos=481    value=,
+STRING_TYPE     line=24   pos=488    value=string
+ID              line=24   pos=498    value=STRING_TYPE
+COMMA           line=24   pos=510    value=,
+ID              line=26   pos=519    value=NOTA
+ID              line=26   pos=524    value=IMPORTANTE
+ID              line=27   pos=543    value=true
+ID              line=27   pos=549    value=y
+ID              line=27   pos=552    value=false
+ID              line=27   pos=559    value=NO
+ID              line=27   pos=562    value=deben
+ID              line=27   pos=568    value=incluirse
+ID              line=27   pos=578    value=aqu
+ID              line=27   pos=583    value=para
+ID              line=27   pos=588    value=evitar
+ID              line=27   pos=595    value=duplicados
+RBRACE          line=28   pos=606    value=}
+EQ              line=30   pos=611    value===
+EQ              line=30   pos=613    value===
+EQ              line=30   pos=615    value===
+EQ              line=30   pos=617    value===
+EQ              line=30   pos=619    value===
+EQ              line=30   pos=621    value===
+EQ              line=30   pos=623    value===
+EQ              line=30   pos=625    value===
+EQ              line=30   pos=627    value===
+EQ              line=30   pos=629    value===
+EQ              line=30   pos=631    value===
+EQ              line=30   pos=633    value===
+ASSIGN          line=30   pos=635    value==
+FLOAT           line=31   pos=639    value=2.0
+ID              line=31   pos=642    value=Lista
+ID              line=31   pos=648    value=de
+ID              line=31   pos=651    value=Tokens
+EQ              line=32   pos=660    value===
+EQ              line=32   pos=662    value===
+EQ              line=32   pos=664    value===
+EQ              line=32   pos=666    value===
+EQ              line=32   pos=668    value===
+EQ              line=32   pos=670    value===
+EQ              line=32   pos=672    value===
+EQ              line=32   pos=674    value===
+EQ              line=32   pos=676    value===
+EQ              line=32   pos=678    value===
+EQ              line=32   pos=680    value===
+EQ              line=32   pos=682    value===
+ASSIGN          line=32   pos=684    value==
+ID              line=33   pos=686    value=tokens
+ASSIGN          line=33   pos=693    value==
+LBRACKET        line=33   pos=695    value=[
+ID              line=34   pos=702    value=ID
+COMMA           line=34   pos=705    value=,
+ID              line=34   pos=708    value=INTEGER
+COMMA           line=34   pos=716    value=,
+ID              line=34   pos=719    value=FLOAT
+COMMA           line=34   pos=725    value=,
+ID              line=35   pos=732    value=STRING_LITERAL
+COMMA           line=35   pos=747    value=,
+ID              line=35   pos=750    value=RAW_STRING
+COMMA           line=35   pos=761    value=,
+ID              line=36   pos=768    value=BOOL_LITERAL
+COMMA           line=36   pos=781    value=,
+ID              line=38   pos=789    value=PLUS
+COMMA           line=38   pos=794    value=,
+ID              line=38   pos=797    value=MINUS
+COMMA           line=38   pos=803    value=,
+ID              line=38   pos=806    value=TIMES
+COMMA           line=38   pos=812    value=,
+ID              line=38   pos=815    value=DIVIDE
+COMMA           line=38   pos=822    value=,
+ID              line=38   pos=825    value=MODULO
+COMMA           line=38   pos=832    value=,
+ID              line=40   pos=840    value=BIT_OR
+COMMA           line=40   pos=847    value=,
+ID              line=40   pos=850    value=BIT_XOR
+COMMA           line=40   pos=858    value=,
+ID              line=40   pos=861    value=AND_NOT
+COMMA           line=40   pos=869    value=,
+ID              line=41   pos=876    value=LSHIFT
+COMMA           line=41   pos=883    value=,
+ID              line=41   pos=886    value=RSHIFT
+COMMA           line=41   pos=893    value=,
+ID              line=43   pos=901    value=OR_ASSIGN
+COMMA           line=43   pos=911    value=,
+ID              line=43   pos=914    value=XOR_ASSIGN
+COMMA           line=43   pos=925    value=,
+ID              line=43   pos=928    value=AND_ASSIGN
+COMMA           line=43   pos=939    value=,
+ID              line=44   pos=946    value=LSHIFT_ASSIGN
+COMMA           line=44   pos=960    value=,
+ID              line=44   pos=963    value=RSHIFT_ASSIGN
+COMMA           line=44   pos=977    value=,
+ID              line=45   pos=984    value=MOD_ASSIGN
+COMMA           line=45   pos=995    value=,
+ID              line=45   pos=998    value=PLUS_ASSIGN
+COMMA           line=45   pos=1010   value=,
+ID              line=45   pos=1013   value=MINUS_ASSIGN
+COMMA           line=45   pos=1026   value=,
+ID              line=46   pos=1033   value=TIMES_ASSIGN
+COMMA           line=46   pos=1046   value=,
+ID              line=46   pos=1049   value=DIVIDE_ASSIGN
+COMMA           line=46   pos=1063   value=,
+ID              line=48   pos=1071   value=ASSIGN
+COMMA           line=48   pos=1078   value=,
+ID              line=49   pos=1085   value=DECLARE_ASSIGN
+COMMA           line=49   pos=1100   value=,
+ID              line=51   pos=1108   value=EQ
+COMMA           line=51   pos=1111   value=,
+ID              line=51   pos=1114   value=NE
+COMMA           line=51   pos=1117   value=,
+ID              line=51   pos=1120   value=LT
+COMMA           line=51   pos=1123   value=,
+ID              line=51   pos=1126   value=LE
+COMMA           line=51   pos=1129   value=,
+ID              line=51   pos=1132   value=GT
+COMMA           line=51   pos=1135   value=,
+ID              line=51   pos=1138   value=GE
+COMMA           line=51   pos=1141   value=,
+ID              line=53   pos=1149   value=NOT
+COMMA           line=53   pos=1153   value=,
+ID              line=53   pos=1156   value=AND
+COMMA           line=53   pos=1160   value=,
+ID              line=53   pos=1163   value=OR
+COMMA           line=53   pos=1166   value=,
+ID              line=55   pos=1174   value=LPAREN
+COMMA           line=55   pos=1181   value=,
+ID              line=55   pos=1184   value=RPAREN
+COMMA           line=55   pos=1191   value=,
+ID              line=56   pos=1198   value=LBRACE
+COMMA           line=56   pos=1205   value=,
+ID              line=56   pos=1208   value=RBRACE
+COMMA           line=56   pos=1215   value=,
+ID              line=57   pos=1222   value=LBRACKET
+COMMA           line=57   pos=1231   value=,
+ID              line=57   pos=1234   value=RBRACKET
+COMMA           line=57   pos=1243   value=,
+ID              line=58   pos=1250   value=SEMI
+COMMA           line=58   pos=1255   value=,
+ID              line=58   pos=1258   value=COMMA
+COMMA           line=58   pos=1264   value=,
+ID              line=58   pos=1267   value=DOT
+COMMA           line=58   pos=1271   value=,
+ID              line=59   pos=1278   value=AMPERSAND
+COMMA           line=59   pos=1288   value=,
+RBRACKET        line=60   pos=1290   value=]
+PLUS            line=60   pos=1292   value=+
+ID              line=60   pos=1294   value=list
+LPAREN          line=60   pos=1298   value=(
+ID              line=60   pos=1299   value=reserved
+DOT             line=60   pos=1307   value=.
+ID              line=60   pos=1308   value=values
+LPAREN          line=60   pos=1314   value=(
+RPAREN          line=60   pos=1315   value=)
+RPAREN          line=60   pos=1316   value=)
+ID              line=62   pos=1321   value=Lista
+ID              line=62   pos=1327   value=global
+ID              line=62   pos=1334   value=para
+ID              line=62   pos=1339   value=errores
+ID              line=62   pos=1347   value=l
+ID              line=62   pos=1349   value=xicos
+ID              line=63   pos=1355   value=ERRORS
+ASSIGN          line=63   pos=1362   value==
+LBRACKET        line=63   pos=1364   value=[
+RBRACKET        line=63   pos=1365   value=]
+EQ              line=65   pos=1370   value===
+EQ              line=65   pos=1372   value===
+EQ              line=65   pos=1374   value===
+EQ              line=65   pos=1376   value===
+EQ              line=65   pos=1378   value===
+EQ              line=65   pos=1380   value===
+EQ              line=65   pos=1382   value===
+EQ              line=65   pos=1384   value===
+EQ              line=65   pos=1386   value===
+EQ              line=65   pos=1388   value===
+EQ              line=65   pos=1390   value===
+EQ              line=65   pos=1392   value===
+ASSIGN          line=65   pos=1394   value==
+FLOAT           line=66   pos=1398   value=3.0
+ID              line=66   pos=1401   value=Reglas
+ID              line=66   pos=1408   value=para
+ID              line=66   pos=1413   value=Tokens
+EQ              line=67   pos=1422   value===
+EQ              line=67   pos=1424   value===
+EQ              line=67   pos=1426   value===
+EQ              line=67   pos=1428   value===
+EQ              line=67   pos=1430   value===
+EQ              line=67   pos=1432   value===
+EQ              line=67   pos=1434   value===
+EQ              line=67   pos=1436   value===
+EQ              line=67   pos=1438   value===
+EQ              line=67   pos=1440   value===
+EQ              line=67   pos=1442   value===
+EQ              line=67   pos=1444   value===
+ASSIGN          line=67   pos=1446   value==
+MINUS           line=69   pos=1451   value=-
+MINUS           line=69   pos=1452   value=-
+MINUS           line=69   pos=1453   value=-
+MINUS           line=69   pos=1454   value=-
+MINUS           line=69   pos=1455   value=-
+MINUS           line=69   pos=1456   value=-
+MINUS           line=69   pos=1457   value=-
+MINUS           line=69   pos=1458   value=-
+MINUS           line=69   pos=1459   value=-
+MINUS           line=69   pos=1460   value=-
+ID              line=69   pos=1462   value=Asignaciones
+ID              line=69   pos=1475   value=compuestas
+MINUS           line=69   pos=1486   value=-
+MINUS           line=69   pos=1487   value=-
+MINUS           line=69   pos=1488   value=-
+MINUS           line=69   pos=1489   value=-
+MINUS           line=69   pos=1490   value=-
+MINUS           line=69   pos=1491   value=-
+MINUS           line=69   pos=1492   value=-
+MINUS           line=69   pos=1493   value=-
+MINUS           line=69   pos=1494   value=-
+MINUS           line=69   pos=1495   value=-
+ID              line=70   pos=1497   value=t_LSHIFT_ASSIGN
+ASSIGN          line=70   pos=1514   value==
+ID              line=70   pos=1516   value=r
+LSHIFT_ASSIGN   line=70   pos=1518   value=<<=
+ID              line=71   pos=1523   value=t_RSHIFT_ASSIGN
+ASSIGN          line=71   pos=1540   value==
+ID              line=71   pos=1542   value=r
+RSHIFT_ASSIGN   line=71   pos=1544   value=>>=
+ID              line=72   pos=1549   value=t_PLUS_ASSIGN
+ASSIGN          line=72   pos=1566   value==
+ID              line=72   pos=1568   value=r
+PLUS_ASSIGN     line=72   pos=1571   value=+=
+ID              line=73   pos=1575   value=t_MINUS_ASSIGN
+ASSIGN          line=73   pos=1592   value==
+ID              line=73   pos=1594   value=r
+MINUS_ASSIGN    line=73   pos=1596   value=-=
+ID              line=74   pos=1600   value=t_TIMES_ASSIGN
+ASSIGN          line=74   pos=1617   value==
+ID              line=74   pos=1619   value=r
+TIMES_ASSIGN    line=74   pos=1622   value=*=
+ID              line=75   pos=1626   value=t_DIVIDE_ASSIGN
+ASSIGN          line=75   pos=1643   value==
+ID              line=75   pos=1645   value=r
+DIVIDE_ASSIGN   line=75   pos=1647   value=/=
+ID              line=76   pos=1651   value=t_MOD_ASSIGN
+ASSIGN          line=76   pos=1668   value==
+ID              line=76   pos=1670   value=r
+MOD_ASSIGN      line=76   pos=1672   value=%=
+ID              line=77   pos=1676   value=t_AND_ASSIGN
+ASSIGN          line=77   pos=1693   value==
+ID              line=77   pos=1695   value=r
+AND_ASSIGN      line=77   pos=1697   value=&=
+ID              line=78   pos=1701   value=t_OR_ASSIGN
+ASSIGN          line=78   pos=1718   value==
+ID              line=78   pos=1720   value=r
+OR_ASSIGN       line=78   pos=1723   value=|=
+ID              line=79   pos=1727   value=t_XOR_ASSIGN
+ASSIGN          line=79   pos=1744   value==
+ID              line=79   pos=1746   value=r
+XOR_ASSIGN      line=79   pos=1749   value=^=
+MINUS           line=81   pos=1756   value=-
+MINUS           line=81   pos=1757   value=-
+MINUS           line=81   pos=1758   value=-
+MINUS           line=81   pos=1759   value=-
+MINUS           line=81   pos=1760   value=-
+MINUS           line=81   pos=1761   value=-
+MINUS           line=81   pos=1762   value=-
+MINUS           line=81   pos=1763   value=-
+MINUS           line=81   pos=1764   value=-
+MINUS           line=81   pos=1765   value=-
+ID              line=81   pos=1767   value=Comparadores
+MINUS           line=81   pos=1780   value=-
+MINUS           line=81   pos=1781   value=-
+MINUS           line=81   pos=1782   value=-
+MINUS           line=81   pos=1783   value=-
+MINUS           line=81   pos=1784   value=-
+MINUS           line=81   pos=1785   value=-
+MINUS           line=81   pos=1786   value=-
+MINUS           line=81   pos=1787   value=-
+MINUS           line=81   pos=1788   value=-
+MINUS           line=81   pos=1789   value=-
+ID              line=82   pos=1791   value=t_DECLARE_ASSIGN
+ASSIGN          line=82   pos=1808   value==
+ID              line=82   pos=1810   value=r
+DECLARE_ASSIGN  line=82   pos=1812   value=:=
+ID              line=83   pos=1816   value=t_EQ
+ASSIGN          line=83   pos=1821   value==
+ID              line=83   pos=1823   value=r
+EQ              line=83   pos=1825   value===
+ID              line=84   pos=1829   value=t_NE
+ASSIGN          line=84   pos=1834   value==
+ID              line=84   pos=1836   value=r
+NE              line=84   pos=1838   value=!=
+ID              line=85   pos=1842   value=t_LE
+ASSIGN          line=85   pos=1847   value==
+ID              line=85   pos=1849   value=r
+LE              line=85   pos=1851   value=<=
+ID              line=86   pos=1855   value=t_GE
+ASSIGN          line=86   pos=1860   value==
+ID              line=86   pos=1862   value=r
+GE              line=86   pos=1864   value=>=
+MINUS           line=88   pos=1871   value=-
+MINUS           line=88   pos=1872   value=-
+MINUS           line=88   pos=1873   value=-
+MINUS           line=88   pos=1874   value=-
+MINUS           line=88   pos=1875   value=-
+MINUS           line=88   pos=1876   value=-
+MINUS           line=88   pos=1877   value=-
+MINUS           line=88   pos=1878   value=-
+MINUS           line=88   pos=1879   value=-
+MINUS           line=88   pos=1880   value=-
+ID              line=88   pos=1882   value=L
+ID              line=88   pos=1884   value=gicos
+MINUS           line=88   pos=1890   value=-
+MINUS           line=88   pos=1891   value=-
+MINUS           line=88   pos=1892   value=-
+MINUS           line=88   pos=1893   value=-
+MINUS           line=88   pos=1894   value=-
+MINUS           line=88   pos=1895   value=-
+MINUS           line=88   pos=1896   value=-
+MINUS           line=88   pos=1897   value=-
+MINUS           line=88   pos=1898   value=-
+MINUS           line=88   pos=1899   value=-
+ID              line=89   pos=1901   value=t_AND
+ASSIGN          line=89   pos=1907   value==
+ID              line=89   pos=1909   value=r
+AMPERSAND       line=89   pos=1912   value=&
+AMPERSAND       line=89   pos=1914   value=&
+ID              line=90   pos=1917   value=t_OR
+ASSIGN          line=90   pos=1922   value==
+ID              line=90   pos=1924   value=r
+MINUS           line=92   pos=1935   value=-
+MINUS           line=92   pos=1936   value=-
+MINUS           line=92   pos=1937   value=-
+MINUS           line=92   pos=1938   value=-
+MINUS           line=92   pos=1939   value=-
+MINUS           line=92   pos=1940   value=-
+MINUS           line=92   pos=1941   value=-
+MINUS           line=92   pos=1942   value=-
+MINUS           line=92   pos=1943   value=-
+MINUS           line=92   pos=1944   value=-
+ID              line=92   pos=1946   value=Bits
+MINUS           line=92   pos=1951   value=-
+MINUS           line=92   pos=1952   value=-
+MINUS           line=92   pos=1953   value=-
+MINUS           line=92   pos=1954   value=-
+MINUS           line=92   pos=1955   value=-
+MINUS           line=92   pos=1956   value=-
+MINUS           line=92   pos=1957   value=-
+MINUS           line=92   pos=1958   value=-
+MINUS           line=92   pos=1959   value=-
+MINUS           line=92   pos=1960   value=-
+ID              line=93   pos=1962   value=t_AND_NOT
+ASSIGN          line=93   pos=1972   value==
+ID              line=93   pos=1974   value=r
+AMPERSAND       line=93   pos=1976   value=&
+ID              line=94   pos=1981   value=t_LSHIFT
+ASSIGN          line=94   pos=1991   value==
+ID              line=94   pos=1993   value=r
+LSHIFT          line=94   pos=1995   value=<<
+ID              line=95   pos=1999   value=t_RSHIFT
+ASSIGN          line=95   pos=2009   value==
+ID              line=95   pos=2011   value=r
+RSHIFT          line=95   pos=2013   value=>>
+MINUS           line=97   pos=2020   value=-
+MINUS           line=97   pos=2021   value=-
+MINUS           line=97   pos=2022   value=-
+MINUS           line=97   pos=2023   value=-
+MINUS           line=97   pos=2024   value=-
+MINUS           line=97   pos=2025   value=-
+MINUS           line=97   pos=2026   value=-
+MINUS           line=97   pos=2027   value=-
+MINUS           line=97   pos=2028   value=-
+MINUS           line=97   pos=2029   value=-
+ID              line=97   pos=2031   value=Operadores
+ID              line=97   pos=2042   value=de
+ID              line=97   pos=2045   value=un
+ID              line=97   pos=2048   value=car
+ID              line=97   pos=2052   value=cter
+MINUS           line=97   pos=2057   value=-
+MINUS           line=97   pos=2058   value=-
+MINUS           line=97   pos=2059   value=-
+MINUS           line=97   pos=2060   value=-
+MINUS           line=97   pos=2061   value=-
+MINUS           line=97   pos=2062   value=-
+MINUS           line=97   pos=2063   value=-
+MINUS           line=97   pos=2064   value=-
+MINUS           line=97   pos=2065   value=-
+MINUS           line=97   pos=2066   value=-
+ID              line=98   pos=2068   value=t_ASSIGN
+ASSIGN          line=98   pos=2077   value==
+ID              line=98   pos=2079   value=r
+ASSIGN          line=98   pos=2081   value==
+ID              line=99   pos=2084   value=t_LT
+ASSIGN          line=99   pos=2089   value==
+ID              line=99   pos=2091   value=r
+LT              line=99   pos=2093   value=<
+ID              line=100  pos=2096   value=t_GT
+ASSIGN          line=100  pos=2101   value==
+ID              line=100  pos=2103   value=r
+GT              line=100  pos=2105   value=>
+ID              line=101  pos=2108   value=t_PLUS
+ASSIGN          line=101  pos=2115   value==
+ID              line=101  pos=2117   value=r
+PLUS            line=101  pos=2120   value=+
+ID              line=102  pos=2123   value=t_MINUS
+ASSIGN          line=102  pos=2131   value==
+ID              line=102  pos=2133   value=r
+MINUS           line=102  pos=2135   value=-
+ID              line=103  pos=2138   value=t_TIMES
+ASSIGN          line=103  pos=2146   value==
+ID              line=103  pos=2148   value=r
+TIMES           line=103  pos=2151   value=*
+ID              line=104  pos=2154   value=t_DIVIDE
+ASSIGN          line=104  pos=2163   value==
+ID              line=104  pos=2165   value=r
+DIVIDE          line=104  pos=2167   value=/
+ID              line=105  pos=2170   value=t_MODULO
+ASSIGN          line=105  pos=2179   value==
+ID              line=105  pos=2181   value=r
+MODULO          line=105  pos=2183   value=%
+ID              line=106  pos=2186   value=t_NOT
+ASSIGN          line=106  pos=2192   value==
+ID              line=106  pos=2194   value=r
+NOT             line=106  pos=2196   value=!
+ID              line=108  pos=2200   value=t_AMPERSAND
+ASSIGN          line=108  pos=2212   value==
+ID              line=108  pos=2214   value=r
+AMPERSAND       line=108  pos=2216   value=&
+ID              line=109  pos=2219   value=t_LPAREN
+ASSIGN          line=109  pos=2228   value==
+ID              line=109  pos=2230   value=r
+LPAREN          line=109  pos=2233   value=(
+ID              line=110  pos=2236   value=t_RPAREN
+ASSIGN          line=110  pos=2245   value==
+ID              line=110  pos=2247   value=r
+RPAREN          line=110  pos=2250   value=)
+ID              line=111  pos=2253   value=t_LBRACE
+ASSIGN          line=111  pos=2262   value==
+ID              line=111  pos=2264   value=r
+LBRACE          line=111  pos=2267   value={
+ID              line=112  pos=2270   value=t_RBRACE
+ASSIGN          line=112  pos=2279   value==
+ID              line=112  pos=2281   value=r
+RBRACE          line=112  pos=2284   value=}
+ID              line=113  pos=2287   value=t_LBRACKET
+ASSIGN          line=113  pos=2298   value==
+ID              line=113  pos=2300   value=r
+LBRACKET        line=113  pos=2303   value=[
+ID              line=114  pos=2306   value=t_RBRACKET
+ASSIGN          line=114  pos=2317   value==
+ID              line=114  pos=2319   value=r
+RBRACKET        line=114  pos=2322   value=]
+ID              line=115  pos=2325   value=t_SEMI
+ASSIGN          line=115  pos=2332   value==
+ID              line=115  pos=2334   value=r
+SEMI            line=115  pos=2336   value=;
+ID              line=116  pos=2339   value=t_COMMA
+ASSIGN          line=116  pos=2347   value==
+ID              line=116  pos=2349   value=r
+COMMA           line=116  pos=2351   value=,
+ID              line=117  pos=2354   value=t_DOT
+ASSIGN          line=117  pos=2360   value==
+ID              line=117  pos=2362   value=r
+DOT             line=117  pos=2365   value=.
+EQ              line=119  pos=2371   value===
+EQ              line=119  pos=2373   value===
+EQ              line=119  pos=2375   value===
+EQ              line=119  pos=2377   value===
+EQ              line=119  pos=2379   value===
+EQ              line=119  pos=2381   value===
+EQ              line=119  pos=2383   value===
+EQ              line=119  pos=2385   value===
+EQ              line=119  pos=2387   value===
+EQ              line=119  pos=2389   value===
+EQ              line=119  pos=2391   value===
+EQ              line=119  pos=2393   value===
+ASSIGN          line=119  pos=2395   value==
+FLOAT           line=120  pos=2399   value=4.0
+ID              line=120  pos=2402   value=Reglas
+ID              line=120  pos=2409   value=con
+ID              line=120  pos=2413   value=Acci
+ID              line=120  pos=2418   value=n
+EQ              line=121  pos=2422   value===
+EQ              line=121  pos=2424   value===
+EQ              line=121  pos=2426   value===
+EQ              line=121  pos=2428   value===
+EQ              line=121  pos=2430   value===
+EQ              line=121  pos=2432   value===
+EQ              line=121  pos=2434   value===
+EQ              line=121  pos=2436   value===
+EQ              line=121  pos=2438   value===
+EQ              line=121  pos=2440   value===
+EQ              line=121  pos=2442   value===
+EQ              line=121  pos=2444   value===
+ASSIGN          line=121  pos=2446   value==
+ID              line=123  pos=2451   value=Identificadores
+ID              line=123  pos=2467   value=y
+ID              line=123  pos=2469   value=palabras
+ID              line=123  pos=2478   value=reservadas
+ID              line=124  pos=2489   value=def
+ID              line=124  pos=2493   value=t_ID
+LPAREN          line=124  pos=2497   value=(
+ID              line=124  pos=2498   value=t
+RPAREN          line=124  pos=2499   value=)
+ID              line=125  pos=2506   value=r
+LBRACKET        line=125  pos=2508   value=[
+ID              line=125  pos=2509   value=a
+MINUS           line=125  pos=2510   value=-
+ID              line=125  pos=2511   value=zA
+MINUS           line=125  pos=2513   value=-
+ID              line=125  pos=2514   value=Z_
+RBRACKET        line=125  pos=2516   value=]
+LBRACKET        line=125  pos=2517   value=[
+ID              line=125  pos=2518   value=a
+MINUS           line=125  pos=2519   value=-
+ID              line=125  pos=2520   value=zA
+MINUS           line=125  pos=2522   value=-
+ID              line=125  pos=2523   value=Z_0
+MINUS           line=125  pos=2526   value=-
+INTEGER         line=125  pos=2527   value=9
+RBRACKET        line=125  pos=2528   value=]
+TIMES           line=125  pos=2529   value=*
+ID              line=126  pos=2536   value=t
+DOT             line=126  pos=2537   value=.
+TYPE            line=126  pos=2538   value=type
+ASSIGN          line=126  pos=2543   value==
+ID              line=126  pos=2545   value=reserved
+DOT             line=126  pos=2553   value=.
+ID              line=126  pos=2554   value=get
+LPAREN          line=126  pos=2557   value=(
+ID              line=126  pos=2558   value=t
+DOT             line=126  pos=2559   value=.
+ID              line=126  pos=2560   value=value
+COMMA           line=126  pos=2565   value=,
+ID              line=126  pos=2568   value=ID
+RPAREN          line=126  pos=2571   value=)
+RETURN          line=127  pos=2577   value=return
+ID              line=127  pos=2584   value=t
+ID              line=129  pos=2589   value=Booleanos
+LPAREN          line=129  pos=2599   value=(
+ID              line=129  pos=2600   value=corregido
+RPAREN          line=129  pos=2609   value=)
+ID              line=130  pos=2611   value=def
+ID              line=130  pos=2615   value=t_BOOL_LITERAL
+LPAREN          line=130  pos=2629   value=(
+ID              line=130  pos=2630   value=t
+RPAREN          line=130  pos=2631   value=)
+ID              line=131  pos=2638   value=r
+LPAREN          line=131  pos=2640   value=(
+ID              line=131  pos=2641   value=true
+ID              line=131  pos=2646   value=false
+RPAREN          line=131  pos=2651   value=)
+ID              line=132  pos=2658   value=t
+DOT             line=132  pos=2659   value=.
+ID              line=132  pos=2660   value=value
+ASSIGN          line=132  pos=2666   value==
+ID              line=132  pos=2668   value=True
+IF              line=132  pos=2673   value=if
+ID              line=132  pos=2676   value=t
+DOT             line=132  pos=2677   value=.
+ID              line=132  pos=2678   value=value
+EQ              line=132  pos=2684   value===
+STRING_LITERAL  line=132  pos=2687   value=true
+ELSE            line=132  pos=2694   value=else
+ID              line=132  pos=2699   value=False
+RETURN          line=133  pos=2709   value=return
+ID              line=133  pos=2716   value=t
+ID              line=135  pos=2721   value=Floats
+ID              line=136  pos=2728   value=def
+ID              line=136  pos=2732   value=t_FLOAT
+LPAREN          line=136  pos=2739   value=(
+ID              line=136  pos=2740   value=t
+RPAREN          line=136  pos=2741   value=)
+ID              line=137  pos=2748   value=r
+ID              line=137  pos=2751   value=d
+PLUS            line=137  pos=2752   value=+
+DOT             line=137  pos=2754   value=.
+ID              line=137  pos=2756   value=d
+TIMES           line=137  pos=2757   value=*
+LPAREN          line=137  pos=2758   value=(
+LBRACKET        line=137  pos=2759   value=[
+ID              line=137  pos=2760   value=Ee
+RBRACKET        line=137  pos=2762   value=]
+LBRACKET        line=137  pos=2763   value=[
+PLUS            line=137  pos=2765   value=+
+MINUS           line=137  pos=2766   value=-
+RBRACKET        line=137  pos=2767   value=]
+ID              line=137  pos=2770   value=d
+PLUS            line=137  pos=2771   value=+
+RPAREN          line=137  pos=2772   value=)
+ID              line=138  pos=2780   value=t
+DOT             line=138  pos=2781   value=.
+ID              line=138  pos=2782   value=value
+ASSIGN          line=138  pos=2788   value==
+ID              line=138  pos=2790   value=float
+LPAREN          line=138  pos=2795   value=(
+ID              line=138  pos=2796   value=t
+DOT             line=138  pos=2797   value=.
+ID              line=138  pos=2798   value=value
+RPAREN          line=138  pos=2803   value=)
+RETURN          line=139  pos=2809   value=return
+ID              line=139  pos=2816   value=t
+ID              line=141  pos=2821   value=Enteros
+ID              line=142  pos=2829   value=def
+ID              line=142  pos=2833   value=t_INTEGER
+LPAREN          line=142  pos=2842   value=(
+ID              line=142  pos=2843   value=t
+RPAREN          line=142  pos=2844   value=)
+ID              line=143  pos=2851   value=r
+ID              line=143  pos=2854   value=d
+PLUS            line=143  pos=2855   value=+
+ID              line=144  pos=2862   value=t
+DOT             line=144  pos=2863   value=.
+ID              line=144  pos=2864   value=value
+ASSIGN          line=144  pos=2870   value==
+INT_TYPE        line=144  pos=2872   value=int
+LPAREN          line=144  pos=2875   value=(
+ID              line=144  pos=2876   value=t
+DOT             line=144  pos=2877   value=.
+ID              line=144  pos=2878   value=value
+RPAREN          line=144  pos=2883   value=)
+RETURN          line=145  pos=2889   value=return
+ID              line=145  pos=2896   value=t
+ID              line=147  pos=2901   value=Strings
+ID              line=147  pos=2909   value=normales
+ID              line=148  pos=2918   value=def
+ID              line=148  pos=2922   value=t_STRING_LITERAL
+LPAREN          line=148  pos=2938   value=(
+ID              line=148  pos=2939   value=t
+RPAREN          line=148  pos=2940   value=)
+ID              line=149  pos=2947   value=r
+LPAREN          line=149  pos=2951   value=(
+LBRACKET        line=149  pos=2952   value=[
+ID              line=149  pos=2957   value=n
+RBRACKET        line=149  pos=2958   value=]
+LPAREN          line=149  pos=2960   value=(
+DOT             line=149  pos=2963   value=.
+RPAREN          line=149  pos=2964   value=)
+RPAREN          line=149  pos=2965   value=)
+TIMES           line=149  pos=2966   value=*
+ID              line=150  pos=2976   value=t
+DOT             line=150  pos=2977   value=.
+ID              line=150  pos=2978   value=value
+ASSIGN          line=150  pos=2984   value==
+ID              line=150  pos=2986   value=t
+DOT             line=150  pos=2987   value=.
+ID              line=150  pos=2988   value=value
+LBRACKET        line=150  pos=2993   value=[
+INTEGER         line=150  pos=2994   value=1
+MINUS           line=150  pos=2996   value=-
+INTEGER         line=150  pos=2997   value=1
+RBRACKET        line=150  pos=2998   value=]
+RETURN          line=151  pos=3004   value=return
+ID              line=151  pos=3011   value=t
+ID              line=153  pos=3016   value=Strings
+ID              line=153  pos=3024   value=raw
+LPAREN          line=153  pos=3028   value=(
+ID              line=153  pos=3029   value=backticks
+RPAREN          line=153  pos=3038   value=)
+ID              line=154  pos=3040   value=def
+ID              line=154  pos=3044   value=t_RAW_STRING
+LPAREN          line=154  pos=3056   value=(
+ID              line=154  pos=3057   value=t
+RPAREN          line=154  pos=3058   value=)
+ID              line=155  pos=3065   value=r
+RAW_STRING      line=155  pos=3067   value=[^
+RBRACKET        line=155  pos=3071   value=]
+TIMES           line=155  pos=3072   value=*
+ID              line=156  pos=3080   value=t
+DOT             line=156  pos=3081   value=.
+ID              line=156  pos=3082   value=value
+ASSIGN          line=156  pos=3088   value==
+ID              line=156  pos=3090   value=t
+DOT             line=156  pos=3091   value=.
+ID              line=156  pos=3092   value=value
+LBRACKET        line=156  pos=3097   value=[
+INTEGER         line=156  pos=3098   value=1
+MINUS           line=156  pos=3100   value=-
+INTEGER         line=156  pos=3101   value=1
+RBRACKET        line=156  pos=3102   value=]
+RETURN          line=157  pos=3108   value=return
+ID              line=157  pos=3115   value=t
+ID              line=159  pos=3120   value=Comentarios
+ID              line=160  pos=3132   value=def
+ID              line=160  pos=3136   value=t_COMMENT_BLOCK
+LPAREN          line=160  pos=3151   value=(
+ID              line=160  pos=3152   value=t
+RPAREN          line=160  pos=3153   value=)
+ID              line=161  pos=3160   value=r
+DIVIDE          line=161  pos=3162   value=/
+TIMES           line=161  pos=3164   value=*
+LPAREN          line=161  pos=3165   value=(
+DOT             line=161  pos=3166   value=.
+ID              line=161  pos=3169   value=n
+RPAREN          line=161  pos=3170   value=)
+TIMES           line=161  pos=3171   value=*
+TIMES           line=161  pos=3174   value=*
+DIVIDE          line=161  pos=3175   value=/
+ID              line=162  pos=3182   value=t
+DOT             line=162  pos=3183   value=.
+ID              line=162  pos=3184   value=lexer
+DOT             line=162  pos=3189   value=.
+ID              line=162  pos=3190   value=lineno
+PLUS_ASSIGN     line=162  pos=3197   value=+=
+ID              line=162  pos=3200   value=t
+DOT             line=162  pos=3201   value=.
+ID              line=162  pos=3202   value=value
+DOT             line=162  pos=3207   value=.
+ID              line=162  pos=3208   value=count
+LPAREN          line=162  pos=3213   value=(
+ID              line=162  pos=3216   value=n
+RPAREN          line=162  pos=3218   value=)
+ID              line=164  pos=3221   value=def
+ID              line=164  pos=3225   value=t_COMMENT_LINE
+LPAREN          line=164  pos=3239   value=(
+ID              line=164  pos=3240   value=t
+RPAREN          line=164  pos=3241   value=)
+ID              line=165  pos=3248   value=r
+ID              line=166  pos=3260   value=pass
+ID              line=168  pos=3268   value=Nuevas
+ID              line=168  pos=3275   value=l
+ID              line=168  pos=3277   value=neas
+ID              line=169  pos=3282   value=def
+ID              line=169  pos=3286   value=t_newline
+LPAREN          line=169  pos=3295   value=(
+ID              line=169  pos=3296   value=t
+RPAREN          line=169  pos=3297   value=)
+ID              line=170  pos=3304   value=r
+ID              line=170  pos=3307   value=n
+PLUS            line=170  pos=3308   value=+
+ID              line=171  pos=3315   value=t
+DOT             line=171  pos=3316   value=.
+ID              line=171  pos=3317   value=lexer
+DOT             line=171  pos=3322   value=.
+ID              line=171  pos=3323   value=lineno
+PLUS_ASSIGN     line=171  pos=3330   value=+=
+ID              line=171  pos=3333   value=len
+LPAREN          line=171  pos=3336   value=(
+ID              line=171  pos=3337   value=t
+DOT             line=171  pos=3338   value=.
+ID              line=171  pos=3339   value=value
+RPAREN          line=171  pos=3344   value=)
+ID              line=173  pos=3349   value=Ignorar
+ID              line=173  pos=3357   value=espacios
+ID              line=173  pos=3366   value=y
+ID              line=173  pos=3368   value=tabs
+ID              line=174  pos=3373   value=t_ignore
+ASSIGN          line=174  pos=3382   value==
+ID              line=174  pos=3387   value=t
+ID              line=176  pos=3393   value=Errores
+ID              line=177  pos=3401   value=def
+ID              line=177  pos=3405   value=t_error
+LPAREN          line=177  pos=3412   value=(
+ID              line=177  pos=3413   value=t
+RPAREN          line=177  pos=3414   value=)
+ID              line=178  pos=3421   value=msg
+ASSIGN          line=178  pos=3425   value==
+ID              line=178  pos=3427   value=f
+STRING_LITERAL  line=178  pos=3428   value=*** ERROR LÉXICO *** [Línea {t.lineno}, …
+ID              line=179  pos=3526   value=print
+LPAREN          line=179  pos=3531   value=(
+ID              line=179  pos=3532   value=msg
+RPAREN          line=179  pos=3535   value=)
+ID              line=180  pos=3541   value=ERRORS
+DOT             line=180  pos=3547   value=.
+ID              line=180  pos=3548   value=append
+LPAREN          line=180  pos=3554   value=(
+ID              line=180  pos=3555   value=msg
+RPAREN          line=180  pos=3558   value=)
+ID              line=181  pos=3564   value=t
+DOT             line=181  pos=3565   value=.
+ID              line=181  pos=3566   value=lexer
+DOT             line=181  pos=3571   value=.
+ID              line=181  pos=3572   value=skip
+LPAREN          line=181  pos=3576   value=(
+INTEGER         line=181  pos=3577   value=1
+RPAREN          line=181  pos=3578   value=)
+ID              line=183  pos=3583   value=Construir
+ID              line=183  pos=3593   value=lexer
+ID              line=184  pos=3599   value=lexer
+ASSIGN          line=184  pos=3605   value==
+ID              line=184  pos=3607   value=lex
+DOT             line=184  pos=3610   value=.
+ID              line=184  pos=3611   value=lex
+LPAREN          line=184  pos=3614   value=(
+RPAREN          line=184  pos=3615   value=)
+
+--- ERRORES LÉXICOS ---
+
+*** ERROR LÉXICO *** [Línea 1, Columna 0] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 1, Columna 27] Carácter ilegal: 'é'
+*** ERROR LÉXICO *** [Línea 4, Columna 73] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 5, Columna 101] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 6, Columna 126] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 8, Columna 171] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 8, Columna 179] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 8, Columna 180] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 8, Columna 182] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 8, Columna 190] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 9, Columna 197] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 9, Columna 204] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 9, Columna 205] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 9, Columna 207] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 9, Columna 214] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 10, Columna 221] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 10, Columna 226] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 10, Columna 227] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 10, Columna 229] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 10, Columna 234] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 11, Columna 241] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 11, Columna 245] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 11, Columna 246] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 11, Columna 248] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 11, Columna 252] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 12, Columna 259] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 12, Columna 265] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 12, Columna 266] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 12, Columna 268] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 12, Columna 274] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 13, Columna 281] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 13, Columna 286] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 13, Columna 287] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 13, Columna 289] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 13, Columna 294] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 14, Columna 301] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 14, Columna 304] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 14, Columna 305] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 14, Columna 307] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 14, Columna 310] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 15, Columna 317] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 15, Columna 322] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 15, Columna 323] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 15, Columna 325] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 15, Columna 330] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 16, Columna 337] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 16, Columna 341] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 16, Columna 342] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 16, Columna 344] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 16, Columna 348] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 17, Columna 355] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 17, Columna 362] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 17, Columna 363] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 17, Columna 365] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 17, Columna 372] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 18, Columna 379] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 18, Columna 383] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 18, Columna 384] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 18, Columna 386] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 18, Columna 390] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 20, Columna 398] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 21, Columna 410] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 21, Columna 414] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 21, Columna 415] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 21, Columna 417] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 21, Columna 426] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 22, Columna 433] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 22, Columna 441] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 22, Columna 442] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 22, Columna 444] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 22, Columna 455] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 23, Columna 462] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 23, Columna 467] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 23, Columna 468] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 23, Columna 470] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 23, Columna 480] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 24, Columna 487] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 24, Columna 494] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 24, Columna 495] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 24, Columna 497] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 24, Columna 509] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 26, Columna 517] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 26, Columna 534] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 27, Columna 540] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 27, Columna 542] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 27, Columna 547] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 27, Columna 551] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 27, Columna 557] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 27, Columna 581] Carácter ilegal: 'í'
+*** ERROR LÉXICO *** [Línea 30, Columna 609] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 31, Columna 637] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 32, Columna 658] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 34, Columna 701] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 34, Columna 704] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 34, Columna 707] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 34, Columna 715] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 34, Columna 718] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 34, Columna 724] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 35, Columna 731] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 35, Columna 746] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 35, Columna 749] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 35, Columna 760] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 36, Columna 767] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 36, Columna 780] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 788] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 793] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 796] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 802] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 805] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 811] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 814] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 821] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 824] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 38, Columna 831] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 40, Columna 839] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 40, Columna 846] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 40, Columna 849] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 40, Columna 857] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 40, Columna 860] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 40, Columna 868] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 41, Columna 875] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 41, Columna 882] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 41, Columna 885] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 41, Columna 892] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 43, Columna 900] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 43, Columna 910] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 43, Columna 913] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 43, Columna 924] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 43, Columna 927] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 43, Columna 938] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 44, Columna 945] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 44, Columna 959] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 44, Columna 962] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 44, Columna 976] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 45, Columna 983] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 45, Columna 994] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 45, Columna 997] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 45, Columna 1009] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 45, Columna 1012] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 45, Columna 1025] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 46, Columna 1032] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 46, Columna 1045] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 46, Columna 1048] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 46, Columna 1062] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 48, Columna 1070] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 48, Columna 1077] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 49, Columna 1084] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 49, Columna 1099] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1107] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1110] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1113] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1116] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1119] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1122] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1125] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1128] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1131] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1134] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1137] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 51, Columna 1140] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 53, Columna 1148] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 53, Columna 1152] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 53, Columna 1155] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 53, Columna 1159] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 53, Columna 1162] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 53, Columna 1165] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 55, Columna 1173] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 55, Columna 1180] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 55, Columna 1183] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 55, Columna 1190] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 56, Columna 1197] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 56, Columna 1204] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 56, Columna 1207] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 56, Columna 1214] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 57, Columna 1221] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 57, Columna 1230] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 57, Columna 1233] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 57, Columna 1242] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 58, Columna 1249] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 58, Columna 1254] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 58, Columna 1257] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 58, Columna 1263] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 58, Columna 1266] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 58, Columna 1270] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 59, Columna 1277] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 59, Columna 1287] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 62, Columna 1319] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 62, Columna 1348] Carácter ilegal: 'é'
+*** ERROR LÉXICO *** [Línea 65, Columna 1368] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 66, Columna 1396] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 67, Columna 1420] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 69, Columna 1449] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 70, Columna 1517] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 70, Columna 1521] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 71, Columna 1543] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 71, Columna 1547] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 72, Columna 1569] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 72, Columna 1570] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 72, Columna 1573] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 73, Columna 1595] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 73, Columna 1598] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 74, Columna 1620] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 74, Columna 1621] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 74, Columna 1624] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 75, Columna 1646] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 75, Columna 1649] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 76, Columna 1671] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 76, Columna 1674] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 77, Columna 1696] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 77, Columna 1699] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 78, Columna 1721] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 78, Columna 1722] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 78, Columna 1725] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 79, Columna 1747] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 79, Columna 1748] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 79, Columna 1751] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 81, Columna 1754] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 82, Columna 1811] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 82, Columna 1814] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 83, Columna 1824] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 83, Columna 1827] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 84, Columna 1837] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 84, Columna 1840] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 85, Columna 1850] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 85, Columna 1853] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 86, Columna 1863] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 86, Columna 1866] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 88, Columna 1869] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 88, Columna 1883] Carácter ilegal: 'ó'
+*** ERROR LÉXICO *** [Línea 89, Columna 1910] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 89, Columna 1911] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 89, Columna 1913] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 89, Columna 1915] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 90, Columna 1925] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 90, Columna 1926] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 90, Columna 1927] Carácter ilegal: '|'
+*** ERROR LÉXICO *** [Línea 90, Columna 1928] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 90, Columna 1929] Carácter ilegal: '|'
+*** ERROR LÉXICO *** [Línea 90, Columna 1930] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 92, Columna 1933] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 93, Columna 1975] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 93, Columna 1977] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 93, Columna 1978] Carácter ilegal: '^'
+*** ERROR LÉXICO *** [Línea 93, Columna 1979] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 94, Columna 1994] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 94, Columna 1997] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 95, Columna 2012] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 95, Columna 2015] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 97, Columna 2018] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 97, Columna 2051] Carácter ilegal: 'á'
+*** ERROR LÉXICO *** [Línea 98, Columna 2080] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 98, Columna 2082] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 99, Columna 2092] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 99, Columna 2094] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 100, Columna 2104] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 100, Columna 2106] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 101, Columna 2118] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 101, Columna 2119] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 101, Columna 2121] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 102, Columna 2134] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 102, Columna 2136] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 103, Columna 2149] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 103, Columna 2150] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 103, Columna 2152] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 104, Columna 2166] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 104, Columna 2168] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 105, Columna 2182] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 105, Columna 2184] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 106, Columna 2195] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 106, Columna 2197] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 108, Columna 2215] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 108, Columna 2217] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 109, Columna 2231] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 109, Columna 2232] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 109, Columna 2234] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 110, Columna 2248] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 110, Columna 2249] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 110, Columna 2251] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 111, Columna 2265] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 111, Columna 2266] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 111, Columna 2268] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 112, Columna 2282] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 112, Columna 2283] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 112, Columna 2285] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 113, Columna 2301] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 113, Columna 2302] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 113, Columna 2304] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 114, Columna 2320] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 114, Columna 2321] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 114, Columna 2323] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 115, Columna 2335] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 115, Columna 2337] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 116, Columna 2350] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 116, Columna 2352] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 117, Columna 2363] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 117, Columna 2364] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 117, Columna 2366] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 119, Columna 2369] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 120, Columna 2397] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 120, Columna 2417] Carácter ilegal: 'ó'
+*** ERROR LÉXICO *** [Línea 121, Columna 2420] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 123, Columna 2449] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 124, Columna 2500] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 125, Columna 2507] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 125, Columna 2530] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 126, Columna 2567] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 126, Columna 2570] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 129, Columna 2587] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 130, Columna 2632] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 131, Columna 2639] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 131, Columna 2645] Carácter ilegal: '|'
+*** ERROR LÉXICO *** [Línea 131, Columna 2652] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 135, Columna 2719] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 136, Columna 2742] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 137, Columna 2749] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 137, Columna 2750] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 137, Columna 2753] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 137, Columna 2755] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 137, Columna 2764] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 137, Columna 2768] Carácter ilegal: '?'
+*** ERROR LÉXICO *** [Línea 137, Columna 2769] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 137, Columna 2773] Carácter ilegal: '?'
+*** ERROR LÉXICO *** [Línea 137, Columna 2774] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 141, Columna 2819] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 142, Columna 2845] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 143, Columna 2852] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 143, Columna 2853] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 143, Columna 2856] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 147, Columna 2899] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 148, Columna 2941] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 149, Columna 2948] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 149, Columna 2949] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2950] Carácter ilegal: '"'
+*** ERROR LÉXICO *** [Línea 149, Columna 2953] Carácter ilegal: '^'
+*** ERROR LÉXICO *** [Línea 149, Columna 2954] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2955] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2956] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2959] Carácter ilegal: '|'
+*** ERROR LÉXICO *** [Línea 149, Columna 2961] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2962] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2967] Carácter ilegal: '?'
+*** ERROR LÉXICO *** [Línea 149, Columna 2968] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 149, Columna 2969] Carácter ilegal: '"'
+*** ERROR LÉXICO *** [Línea 149, Columna 2970] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 150, Columna 2995] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 153, Columna 3014] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 154, Columna 3059] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 155, Columna 3066] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 155, Columna 3073] Carácter ilegal: '`'
+*** ERROR LÉXICO *** [Línea 155, Columna 3074] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 156, Columna 3099] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 159, Columna 3118] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 160, Columna 3154] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 161, Columna 3161] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 161, Columna 3163] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 161, Columna 3167] Carácter ilegal: '|'
+*** ERROR LÉXICO *** [Línea 161, Columna 3168] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 161, Columna 3172] Carácter ilegal: '?'
+*** ERROR LÉXICO *** [Línea 161, Columna 3173] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 161, Columna 3176] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 162, Columna 3214] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 162, Columna 3215] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 162, Columna 3217] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 164, Columna 3242] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 165, Columna 3249] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 168, Columna 3266] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 168, Columna 3276] Carácter ilegal: 'í'
+*** ERROR LÉXICO *** [Línea 169, Columna 3298] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 170, Columna 3305] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 170, Columna 3306] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 170, Columna 3309] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 173, Columna 3347] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 174, Columna 3384] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 174, Columna 3386] Carácter ilegal: '\'
+*** ERROR LÉXICO *** [Línea 174, Columna 3388] Carácter ilegal: '''
+*** ERROR LÉXICO *** [Línea 176, Columna 3391] Carácter ilegal: '#'
+*** ERROR LÉXICO *** [Línea 177, Columna 3415] Carácter ilegal: ':'
+*** ERROR LÉXICO *** [Línea 183, Columna 3581] Carácter ilegal: '#'
