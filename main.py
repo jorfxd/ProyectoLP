@@ -24,17 +24,16 @@ def run_syntax_and_semantic(code, github_user):
     # Configurar usuario de GitHub en el módulo semant
     semant.GIT_USER = github_user
     
-    success, ast, sem_errors = parse_code(code, do_semantic=True, git_user=github_user)
+    syntax_ok, ast, sem_errors = parse_code(code, do_semantic=True, git_user=github_user)
 
-    if not success:
+    if not syntax_ok:
         print("\nSe detectaron errores sintácticos.")
         print("   El análisis semántico no se pudo completar.")
-        return False
-    
-    print("\n✔ Análisis sintáctico completado exitosamente")
-    print("\nÁRBOL DE SINTAXIS ABSTRACTA (AST):")
-    print("-"*60)
-    print(ast)
+    else:
+        print("\n✔ Análisis sintáctico completado exitosamente")
+        print("\nÁRBOL DE SINTAXIS ABSTRACTA (AST):")
+        print("-"*60)
+        print(ast)
 
     print("\n" + "="*60)
     print("   ERRORES SEMÁNTICOS DETECTADOS")
@@ -46,7 +45,7 @@ def run_syntax_and_semantic(code, github_user):
     else:
         print("✔ No se encontraron errores semánticos.")
 
-    return success
+    return syntax_ok
 
 def main():
     print("="*60)

@@ -40,7 +40,16 @@ class SemanticAnalyzer:
         self.errors = []
         self.imports = set()
 
-    
+    def rule_if_condition_bool(self, node):
+        # Ejemplo: if (cond) { ... }
+        if isinstance(node, tuple) and node[0] == "if":
+            cond = node[1]
+            cond_type = self.infer_type(cond)
+            if cond_type != 'BOOL_TYPE':
+                self.errors.append(
+                    f"ERROR SEMÁNTICO: La condición del if debe ser bool, se encontró {cond_type}"
+                )
+
     # Método auxiliar para inferir tipo de expresión
     def infer_type(self, expr):
         """Infiere el tipo de una expresión"""
@@ -192,7 +201,7 @@ class SemanticAnalyzer:
             
             # Verificar compatibilidad de tipos
             self.rule_type_compatibility(node)
-            
+            self.rule_if_condition_bool(node)
             # Solo verificar variables no declaradas si NO es un tipo ni una tupla binop/unary
             should_check = True
             if isinstance(node, str) and node.endswith('_TYPE'):

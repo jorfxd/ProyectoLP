@@ -1,7 +1,7 @@
 # goYacc.py - Analizador sintáctico + integración semántica
 
 import ply.yacc as yacc
-from golex import tokens
+from golex import tokens, lexer
 from semant import SemanticAnalyzer
 
 precedence = (
@@ -68,29 +68,52 @@ def p_statement_list(p):
         p[0] = []
 
 def p_statement(p):
-    """statement : VAR ID type_spec ASSIGN expression SEMI
-                 | VAR ID type_spec SEMI
-                 | ID DECLARE_ASSIGN expression SEMI
-                 | ID ASSIGN expression SEMI
-                 | control_structure
-                 | expression SEMI
-                 | SEMI"""
+    """
+    statement : VAR ID type_spec ASSIGN expression SEMI_OPTIONAL
+              | VAR ID type_spec SEMI_OPTIONAL
+              | ID DECLARE_ASSIGN expression SEMI_OPTIONAL
+              | ID ASSIGN expression SEMI_OPTIONAL
+              | assign_statement SEMI_OPTIONAL
+              | control_structure
+              | expression SEMI_OPTIONAL
+              | SEMI
+    """
+    # 1) Reglas de 1 símbolo: control_structure o SEMI
     if len(p) == 2:
-        # Solo SEMI (statement vacío)
-        p[0] = ('empty_stmt',)
+        if p.slice[1].type == 'SEMI':
+            # statement : SEMI  -> statement vacío
+            p[0] = ('empty_stmt',)
+        else:
+            # statement : control_structure
+            # (if, for, etc.) simplemente devolvemos el nodo del if/for
+            p[0] = p[1]
+
+    # 2) Reglas de 3 símbolos: expression SEMI_OPTIONAL o assign_statement SEMI_OPTIONAL
     elif len(p) == 3:
-        # expression SEMI
+        # Aquí las dos formas:
+        #   statement : expression SEMI_OPTIONAL
+        #   statement : assign_statement SEMI_OPTIONAL
+        # En ambos casos nos interesa el nodo (expr o assign)
         p[0] = p[1]
+
+    # 3) Reglas de 5 símbolos:
+    #   VAR ID type_spec SEMI_OPTIONAL
+    #   ID DECLARE_ASSIGN expression SEMI_OPTIONAL
+    #   ID ASSIGN expression SEMI_OPTIONAL
     elif len(p) == 5:
-        # ID DECLARE_ASSIGN expression SEMI o ID ASSIGN expression SEMI o VAR ID type_spec SEMI
-        if p[1] == 'var':
+        if p.slice[1].type == 'VAR':
+            # VAR ID type_spec SEMI_OPTIONAL
             p[0] = ('var', p[2], p[3], None)
         elif p.slice[2].type == 'DECLARE_ASSIGN':
+            # ID DECLARE_ASSIGN expression SEMI_OPTIONAL
             p[0] = ('declare_short', p[1], p[3])
         else:
+            # ID ASSIGN expression SEMI_OPTIONAL
             p[0] = ('assign', p[1], p[3])
+
+    # 4) Reglas de 7 símbolos:
+    #   VAR ID type_spec ASSIGN expression SEMI_OPTIONAL
     elif len(p) == 7:
-        # VAR ID type_spec ASSIGN expression SEMI
         p[0] = ('var', p[2], p[3], p[5])
 
 def p_type_spec(p):
@@ -141,6 +164,11 @@ def p_expression(p):
                | expression LE expression
                | expression GT expression
                | expression GE expression
+               | expression BIT_OR expression
+               | expression BIT_XOR expression
+               | expression AND_NOT expression
+               | expression LSHIFT expression
+               | expression RSHIFT expression
                | MINUS expression %prec UMINUS
                | NOT expression
                | factor
@@ -151,6 +179,33 @@ def p_expression(p):
         p[0] = ('unary', p[1], p[2])
     else:
         p[0] = p[1]
+
+#Guillermo Teran agregado
+def p_assign_statement(p):
+    """
+    assign_statement : ID LSHIFT_ASSIGN expression
+                     | ID PLUS_ASSIGN expression
+                     | ID MINUS_ASSIGN expression
+                     | ID TIMES_ASSIGN expression
+                     | ID DIVIDE_ASSIGN expression
+                     | ID MOD_ASSIGN expression
+                     | ID AND_ASSIGN expression
+                     | ID OR_ASSIGN expression
+                     | ID XOR_ASSIGN expression
+    """
+    # AST de ejemplo: ("assign", operador, identificador, expresión)
+    # Para z <<= 1 -> ("assign", "LSHIFT_ASSIGN", "z", 1)
+    p[0] = ("assign", p[2], p[1], p[3])
+
+def p_semi_optional(p):
+    """
+    SEMI_OPTIONAL : SEMI
+                  | empty
+    """
+    # No necesitamos guardar nada, es solo sincronización
+    pass
+
+#FIN
 
 def p_factor(p):
     """factor : INTEGER
@@ -178,10 +233,7 @@ def p_error(p):
     if p:
         print(f"*** ERROR SINTÁCTICO *** Línea {p.lineno}, cerca de '{p.value}'")
         # Intentar recuperarse
-        while True:
-            tok = parser.token()
-            if not tok or tok.type in ('RBRACE', 'SEMI'):
-                break
+
         parser.errok()
     else:
         print("*** ERROR SINTÁCTICO *** Fin del archivo inesperado")
@@ -199,14 +251,17 @@ def parse_code(code, do_semantic=True, sem_logger=None, git_user=None):
     global syntax_error_flag
     syntax_error_flag = False
 
-    ast = parser.parse(code)
+    ast = parser.parse(code, lexer=lexer)
 
-    if syntax_error_flag:
-        return (False, None, [])
+    syntax_ok = not syntax_error_flag
+
+    sem_errors = []
+    #if syntax_error_flag:
+     #   return (False, None, [])
 
     # Si no se quiere análisis semántico
-    if not do_semantic:
-        return (True, ast, [])
+    if not do_semantic or ast is None:
+        return (syntax_ok, ast, sem_errors)
 
     # Configurar usuario de GitHub antes de crear el analizador
     if git_user:
@@ -217,5 +272,5 @@ def parse_code(code, do_semantic=True, sem_logger=None, git_user=None):
     sem = sem_logger or SemanticAnalyzer()
     sem_errors = sem.analyze(ast)
 
-    success = len(sem_errors) == 0
-    return (success, ast, sem_errors)
+
+    return (syntax_ok, ast, sem_errors)

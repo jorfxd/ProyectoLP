@@ -102,6 +102,11 @@ t_DIVIDE = r'/'
 t_MODULO = r'%'
 t_NOT = r'!'
 
+#Agregue esto
+t_BIT_OR    = r'\|'   # <- ESTE FALTABA
+t_BIT_XOR   = r'\^'   # <- ESTE FALTABA
+#Fin
+
 t_AMPERSAND = r'&'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'

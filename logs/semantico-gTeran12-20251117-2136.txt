@@ -1,0 +1,24 @@
+============================================================
+  REPORTE DE ANÁLISIS SEMÁNTICO
+============================================================
+
+Usuario: gTeran12
+Fecha: 2025-11-17 21:36:24
+
+TABLA DE SÍMBOLOS:
+------------------------------------------------------------
+  x: INT_TYPE
+  y: INT_TYPE
+  z: STRING_TYPE
+
+============================================================
+ERRORES SEMÁNTICOS DETECTADOS:
+============================================================
+
+1. ERROR SEMÁNTICO: Asignación a variable no declarada '<<='
+2. ERROR SEMÁNTICO: Variable '<<=' no declarada
+3. ERROR SEMÁNTICO: La condición del if debe ser bool, se encontró STRING_TYPE
+4. ERROR SEMÁNTICO: Variable 'hola' no declarada
+5. ERROR SEMÁNTICO: Variable 'chao' no declarada
+
+Total de errores: 5
