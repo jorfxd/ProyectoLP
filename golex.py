@@ -15,16 +15,13 @@ reserved = {
     'else': 'ELSE',
     'for': 'FOR',
     'return': 'RETURN',
-    'fmt': 'FMT',
+    # REMOVIDO: 'fmt': 'FMT',  ← fmt NO es una palabra reservada de Go
 
     # Tipos
     'int': 'INT_TYPE',
     'float64': 'FLOAT_TYPE',
     'bool': 'BOOL_TYPE',
     'string': 'STRING_TYPE',
-
-    # NOTA IMPORTANTE:
-    # 'true' y 'false' NO deben incluirse aquí para evitar duplicados
 }
 
 # =========================

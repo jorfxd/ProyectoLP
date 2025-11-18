@@ -1,25 +1,22 @@
-# goYacc.py - Analizador sintáctico (y orquesta semántica) - VERSIÓN CORREGIDA
+# goYacc.py - Analizador sintáctico + integración semántica
+
 import ply.yacc as yacc
 from golex import tokens
 from semant import SemanticAnalyzer
 
-# Precedencia (tokens definidos en golex.py)
 precedence = (
-    ('left', 'OR'),        # lógico ||  (si tu lexer usa 'OR')
-    ('left', 'AND'),       # lógico &&  (si tu lexer usa 'AND')
+    ('left', 'OR'),
+    ('left', 'AND'),
     ('nonassoc', 'EQ', 'NE', 'LT', 'LE', 'GT', 'GE'),
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MODULO'),
     ('right', 'UMINUS', 'NOT'),
 )
 
-# Bandera de errores sintácticos
 syntax_error_flag = False
 
-# ============================
-# Reglas del Parser (AST simple usando tuplas)
-# ============================
 
+#   REGLAS DEL PARSER
 def p_program(p):
     """program : top_declaration_list"""
     p[0] = ('program', p[1])
@@ -27,40 +24,20 @@ def p_program(p):
 def p_top_declaration_list(p):
     """top_declaration_list : top_declaration top_declaration_list
                              | top_declaration"""
-    if len(p) == 3:
-        p[0] = [p[1]] + p[2]
-    else:
-        p[0] = [p[1]]
+    p[0] = [p[1]] + p[2] if len(p) == 3 else [p[1]]
 
 def p_top_declaration(p):
     """
-    top_declaration : PACKAGE ID SEMI
-                    | IMPORT STRING_LITERAL SEMI
+    top_declaration : PACKAGE ID
+                    | IMPORT STRING_LITERAL
                     | FUNC ID LPAREN param_list RPAREN func_return LBRACE statement_list RBRACE
-                    | VAR ID type_spec ASSIGN expression SEMI
-                    | VAR ID type_spec SEMI
-                    | ID DECLARE_ASSIGN expression SEMI
-                    | ID ASSIGN expression SEMI
     """
-    # Normalizamos nodos (p[1] es el lexema de la palabra reservada o el ID)
     if p[1] == 'package':
         p[0] = ('package', p[2])
     elif p[1] == 'import':
         p[0] = ('import', p[2])
     elif p[1] == 'func':
-        # ('func', name, params, return_type, body_statements)
         p[0] = ('func', p[2], p[4], p[6], p[8])
-    elif p[1] == 'var':
-        if len(p) == 6:
-            p[0] = ('var', p[2], p[3], p[5])  # var x type = expr
-        else:
-            p[0] = ('var', p[2], p[3], None)  # var x type
-    else:
-        # ID := expr  o ID = expr
-        if p[2] == ':=' or p.slice[2].type == 'DECLARE_ASSIGN':
-            p[0] = ('declare_short', p[1], p[3])
-        else:
-            p[0] = ('assign', p[1], p[3])
 
 def p_func_return(p):
     """func_return : type_spec
@@ -73,10 +50,10 @@ def p_param_list(p):
                   | empty"""
     if len(p) == 4:
         p[0] = [p[1]] + p[3]
-    elif len(p) == 2:
-        p[0] = [p[1]] if p[1] is not None else []
-    else:
+    elif p[1] is None:
         p[0] = []
+    else:
+        p[0] = [p[1]]
 
 def p_param(p):
     """param : ID type_spec"""
@@ -86,38 +63,49 @@ def p_statement_list(p):
     """statement_list : statement statement_list
                       | empty"""
     if len(p) == 3:
-        p[0] = [p[1]] + p[2]
+        p[0] = [p[1]] + p[2] if p[1] is not None else p[2]
     else:
         p[0] = []
 
 def p_statement(p):
-    """statement : declaration
+    """statement : VAR ID type_spec ASSIGN expression SEMI
+                 | VAR ID type_spec SEMI
+                 | ID DECLARE_ASSIGN expression SEMI
+                 | ID ASSIGN expression SEMI
                  | control_structure
                  | expression SEMI
-                 | print_statement SEMI"""
-    p[0] = p[1]
-
-# Declarations
-def p_declaration_short(p):
-    """declaration : ID DECLARE_ASSIGN expression"""
-    p[0] = ('declare_short', p[1], p[3])
-
-def p_declaration_assign(p):
-    """declaration : ID ASSIGN expression"""
-    p[0] = ('assign', p[1], p[3])
-
-def p_declaration_long(p):
-    """declaration : VAR ID type_spec ASSIGN expression"""
-    p[0] = ('var', p[2], p[3], p[5])
+                 | SEMI"""
+    if len(p) == 2:
+        # Solo SEMI (statement vacío)
+        p[0] = ('empty_stmt',)
+    elif len(p) == 3:
+        # expression SEMI
+        p[0] = p[1]
+    elif len(p) == 5:
+        # ID DECLARE_ASSIGN expression SEMI o ID ASSIGN expression SEMI o VAR ID type_spec SEMI
+        if p[1] == 'var':
+            p[0] = ('var', p[2], p[3], None)
+        elif p.slice[2].type == 'DECLARE_ASSIGN':
+            p[0] = ('declare_short', p[1], p[3])
+        else:
+            p[0] = ('assign', p[1], p[3])
+    elif len(p) == 7:
+        # VAR ID type_spec ASSIGN expression SEMI
+        p[0] = ('var', p[2], p[3], p[5])
 
 def p_type_spec(p):
     """type_spec : INT_TYPE
                  | FLOAT_TYPE
                  | STRING_TYPE
                  | BOOL_TYPE"""
-    p[0] = p[1]
+    mapping = {
+        'int': 'INT_TYPE',
+        'float64': 'FLOAT_TYPE',
+        'string': 'STRING_TYPE',
+        'bool': 'BOOL_TYPE'
+    }
+    p[0] = mapping.get(p[1], p[1])
 
-# Control structures
 def p_control_structure_if(p):
     """control_structure : IF expression LBRACE statement_list RBRACE else_part"""
     p[0] = ('if', p[2], p[4], p[6])
@@ -125,15 +113,7 @@ def p_control_structure_if(p):
 def p_else_part(p):
     """else_part : ELSE LBRACE statement_list RBRACE
                  | empty"""
-    if len(p) == 5:
-        p[0] = p[2]
-    else:
-        p[0] = None
-
-# Print statement (ej. fmt.Println)
-def p_print_statement(p):
-    """print_statement : ID DOT ID LPAREN arg_list RPAREN"""
-    p[0] = ('call', p[1], p[3], p[5])
+    p[0] = p[3] if len(p) == 5 else None
 
 def p_arg_list(p):
     """arg_list : expression COMMA arg_list
@@ -142,13 +122,10 @@ def p_arg_list(p):
     if len(p) == 4:
         p[0] = [p[1]] + p[3]
     elif len(p) == 2:
-        p[0] = [p[1]] if p[1] is not None else []
+        p[0] = [p[1]] if p[1] else []
     else:
         p[0] = []
 
-# ----------------------------
-# Expresiones y factores
-# ----------------------------
 def p_expression(p):
     """
     expression : expression PLUS expression
@@ -182,52 +159,63 @@ def p_factor(p):
               | RAW_STRING
               | ID
               | BOOL_LITERAL
+              | ID DOT ID LPAREN arg_list RPAREN
               | LPAREN expression RPAREN"""
     if len(p) == 4:
-        p[0] = p[2]
+        p[0] = p[2]  # (expression)
+    elif len(p) == 7:
+        p[0] = ('call', p[1], p[3], p[5])  # ID.ID(args)
     else:
         p[0] = p[1]
 
-# Empty
 def p_empty(p):
     "empty :"
     p[0] = None
 
-# ----------------------------
-# Manejo de errores sintácticos
-# ----------------------------
 def p_error(p):
     global syntax_error_flag
     syntax_error_flag = True
     if p:
-        print(f"*** ERROR SINTÁCTICO *** Línea {p.lineno}, cerca de '{p.value}' (Token: {p.type}).")
-        # intentar sincronizar: descartar tokens hasta '}' o ';' o EOF
+        print(f"*** ERROR SINTÁCTICO *** Línea {p.lineno}, cerca de '{p.value}'")
+        # Intentar recuperarse
         while True:
             tok = parser.token()
-            if not tok or tok.type == 'RBRACE' or tok.type == 'SEMI':
+            if not tok or tok.type in ('RBRACE', 'SEMI'):
                 break
         parser.errok()
-        return tok
     else:
         print("*** ERROR SINTÁCTICO *** Fin del archivo inesperado")
 
-# Construcción del parser
+# Construir parser
 parser = yacc.yacc()
 
-# Función que usa main.py
-def parse_code(code, do_semantic=True, sem_logger=None):
+
+#       FUNCIÓN FINAL parse_code()
+def parse_code(code, do_semantic=True, sem_logger=None, git_user=None):
     """
-    Analiza sintácticamente el código. Si do_semantic=True y no hay errores sintácticos,
-    invoca el analizador semántico (semant.SemanticAnalyzer).
-    sem_logger: instancia opcional de SemanticAnalyzer (para reusar).
-    Retorna (success_bool, ast_or_none, sem_errors_list).
+    Retorna:
+      (success, ast, sem_errors)
     """
     global syntax_error_flag
     syntax_error_flag = False
-    result = parser.parse(code)
+
+    ast = parser.parse(code)
+
     if syntax_error_flag:
         return (False, None, [])
-    ast = result
+
+    # Si no se quiere análisis semántico
+    if not do_semantic:
+        return (True, ast, [])
+
+    # Configurar usuario de GitHub antes de crear el analizador
+    if git_user:
+        import semant as sem_module
+        sem_module.GIT_USER = git_user
+
+    # Ejecutar semántico
     sem = sem_logger or SemanticAnalyzer()
     sem_errors = sem.analyze(ast)
-    return (len(sem_errors) == 0, ast, sem_errors)
+
+    success = len(sem_errors) == 0
+    return (success, ast, sem_errors)

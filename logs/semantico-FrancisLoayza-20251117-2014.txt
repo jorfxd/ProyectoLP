@@ -1,0 +1,23 @@
+============================================================
+  REPORTE DE ANÁLISIS SEMÁNTICO
+============================================================
+
+Usuario: FrancisLoayza
+Fecha: 2025-11-17 20:14:12
+
+TABLA DE SÍMBOLOS:
+------------------------------------------------------------
+  x: INT_TYPE
+  y: INT_TYPE
+  z: STRING_TYPE
+  s: STRING_TYPE
+
+============================================================
+ERRORES SEMÁNTICOS DETECTADOS:
+============================================================
+
+1. ERROR SEMÁNTICO: Redeclaración de variable 'x'
+2. ERROR SEMÁNTICO: Variable 'w' no declarada
+3. ERROR SEMÁNTICO: Incompatibilidad de tipo en variable 's' (esperado string, obtenido int)
+
+Total de errores: 3
