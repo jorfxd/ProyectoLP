@@ -3,13 +3,14 @@
 
 from golex import lexer
 
-# Código de prueba simplificado
+# Código de prueba
 test_code = """package main
 
 import "fmt"
 
 func main() {
-    fmt.Println(x);
+    mensaje := "Hello, world!";
+    fmt.Println(mensaje);
 }
 """
 
@@ -38,12 +39,23 @@ if os.path.exists('parsetab.py'):
 
 from goYacc import parse_code
 
-success, ast, errors = parse_code(test_code, do_semantic=False)
+success, ast, errors = parse_code(test_code, do_semantic=True, git_user="TestUser")
+
+print(f"\nÉxito del parsing: {success}")
+print(f"AST generado: {ast is not None}")
+print(f"Errores semánticos: {len(errors)}")
 
 if success:
-    print("Parsing exitoso!")
+    print("\n✔ Parsing exitoso!")
     print("\nAST generado:")
     print(ast)
+    
+    if errors:
+        print("\nErrores semánticos encontrados:")
+        for err in errors:
+            print(f"  - {err}")
+    else:
+        print("\n Sin errores semánticos")
 else:
-    print("Parsing falló")
+    print("\n Parsing falló")
     print("No se pudo generar el AST")

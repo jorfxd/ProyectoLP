@@ -40,15 +40,6 @@ class SemanticAnalyzer:
         self.errors = []
         self.imports = set()
 
-    def rule_if_condition_bool(self, node):
-        # Ejemplo: if (cond) { ... }
-        if isinstance(node, tuple) and node[0] == "if":
-            cond = node[1]
-            cond_type = self.infer_type(cond)
-            if cond_type != 'BOOL_TYPE':
-                self.errors.append(
-                    f"ERROR SEMÁNTICO: La condición del if debe ser bool, se encontró {cond_type}"
-                )
 
     # Método auxiliar para inferir tipo de expresión
     def infer_type(self, expr):
@@ -80,7 +71,7 @@ class SemanticAnalyzer:
                 return self.symtab[expr]
         return None
 
-    
+
     # Reglas semánticas
     def rule_redeclaration(self, node):
         if not isinstance(node, tuple):
@@ -118,7 +109,14 @@ class SemanticAnalyzer:
             operators = ['+', '-', '*', '/', '%', '==', '!=', '<', '>', '<=', '>=', 
                         '&&', '||', '!', '&', '|', '^', '<<', '>>', '&^']
             
-            if node not in self.symtab and node not in reserved_words and node not in operators:
+            # IMPORTANTE: No verificar strings que NO son identificadores válidos
+            # (literales de string contendrán espacios, puntuación, etc.)
+            is_valid_identifier = node.replace('_', '').isalnum() and not node[0].isdigit()
+            
+            if (is_valid_identifier and 
+                node not in self.symtab and 
+                node not in reserved_words and 
+                node not in operators):
                 self.errors.append(f"ERROR SEMÁNTICO: Variable '{node}' no declarada")
         
         if isinstance(node, tuple):
@@ -189,6 +187,7 @@ class SemanticAnalyzer:
                     # (asumimos que fmt es built-in)
                     pass
 
+
     # Recorrido del AST
     def traverse(self, node):
         try:
@@ -201,7 +200,7 @@ class SemanticAnalyzer:
             
             # Verificar compatibilidad de tipos
             self.rule_type_compatibility(node)
-            self.rule_if_condition_bool(node)
+            
             # Solo verificar variables no declaradas si NO es un tipo ni una tupla binop/unary
             should_check = True
             if isinstance(node, str) and node.endswith('_TYPE'):
@@ -238,6 +237,7 @@ class SemanticAnalyzer:
         elif isinstance(node, list):
             for elem in node:
                 self.traverse(elem)
+
 
     # Punto de entrada
     def analyze(self, ast):
@@ -288,6 +288,7 @@ class SemanticAnalyzer:
         return self.errors
 
 
+
 # MAIN SOLO SI EJECUTAS ESTE ARCHIVO DIRECTO
 def main():
     global GIT_USER
@@ -321,7 +322,7 @@ def main():
         for e in errors:
             print(" -", e)
     else:
-        print("✔ Sin errores semánticos")
+        print("Sin errores semánticos")
 
 
 if __name__ == "__main__":
