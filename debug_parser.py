@@ -46,7 +46,7 @@ print(f"AST generado: {ast is not None}")
 print(f"Errores semánticos: {len(errors)}")
 
 if success:
-    print("\n✔ Parsing exitoso!")
+    print("\nParsing exitoso!")
     print("\nAST generado:")
     print(ast)
     

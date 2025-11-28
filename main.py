@@ -30,7 +30,7 @@ def run_syntax_and_semantic(code, github_user):
         print("\nSe detectaron errores sintácticos.")
         print("   El análisis semántico no se pudo completar.")
     else:
-        print("\n✔ Análisis sintáctico completado exitosamente")
+        print("\nAnálisis sintáctico completado exitosamente")
         print("\nÁRBOL DE SINTAXIS ABSTRACTA (AST):")
         print("-"*60)
         print(ast)
@@ -43,7 +43,7 @@ def run_syntax_and_semantic(code, github_user):
             print(f"{i}. {err}")
         print(f"\nTotal de errores semánticos: {len(sem_errors)}")
     else:
-        print("✔ No se encontraron errores semánticos.")
+        print("No se encontraron errores semánticos.")
 
     return syntax_ok
 

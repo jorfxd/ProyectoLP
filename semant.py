@@ -282,7 +282,7 @@ class SemanticAnalyzer:
                     f.write(f"{i}. {e}\n")
                 f.write(f"\nTotal de errores: {len(self.errors)}\n")
             else:
-                f.write("✔ No se encontraron errores semánticos.\n")
+                f.write("No se encontraron errores semánticos.\n")
 
         print(f"[SEMÁNTICO] Log guardado en: {filename}")
         return self.errors
