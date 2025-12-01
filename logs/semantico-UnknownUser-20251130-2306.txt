@@ -1,0 +1,18 @@
+============================================================
+  REPORTE DE ANÁLISIS SEMÁNTICO
+============================================================
+
+Usuario: UnknownUser
+Fecha: 2025-11-30 23:06:13
+
+TABLA DE SÍMBOLOS:
+------------------------------------------------------------
+  mensaje: STRING_TYPE
+
+============================================================
+ERRORES SEMÁNTICOS DETECTADOS:
+============================================================
+
+1. ERROR SEMÁNTICO: Variable 'mainimport' no declarada
+
+Total de errores: 1

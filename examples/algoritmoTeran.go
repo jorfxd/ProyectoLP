@@ -1,16 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+// Suma dos números y devuelve el resultado
+func sumar(a int, b int) int {
+	return a + b
+}
 
 func main() {
-    var x int = 10
-    y := 20
-    // Operadores bit a bit:
-    z := (x | y) ^ (y &^ x)
-    z <<= 1
-    if x < y {
-        fmt.Println("hola", x+y, z)
-    } else {
-        fmt.Println(`chao`)
-    }
+	fmt.Println("Hola, Go está funcionando")
+
+	x, y := 7, 5
+	resultado := sumar(x, y)
+	fmt.Printf("La suma de %d + %d = %d\n", x, y, resultado)
+
+	fmt.Println("Fecha y hora actual:", time.Now())
 }

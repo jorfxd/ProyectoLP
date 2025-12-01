@@ -15,8 +15,10 @@ reserved = {
     'else': 'ELSE',
     'for': 'FOR',
     'return': 'RETURN',
-    # REMOVIDO: 'fmt': 'FMT',  ← fmt NO es una palabra reservada de Go
-
+    'fmt':'FMT',
+    'Println':'PRINTLN',
+    'main':'MAIN',
+    'sumar':'SUMAR',
     # Tipos
     'int': 'INT_TYPE',
     'float64': 'FLOAT_TYPE',
@@ -169,8 +171,8 @@ def t_COMMENT_LINE(t):
 
 # Nuevas líneas
 def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
+    r'\r?\n+'
+    t.lexer.lineno += t.value.count('\n')
 
 # Ignorar espacios y tabs
 t_ignore = ' \t'

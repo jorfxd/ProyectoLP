@@ -4,11 +4,15 @@ Unused terminals:
 
     AMPERSAND
     CONST
+    FMT
     FOR
     LBRACKET
+    MAIN
+    PRINTLN
     RBRACKET
     RETURN
     RSHIFT_ASSIGN
+    SUMAR
     TYPE
 
 Grammar
@@ -109,6 +113,7 @@ ELSE                 : 28
 EQ                   : 40
 FLOAT                : 66
 FLOAT_TYPE           : 24
+FMT                  : 
 FOR                  : 
 FUNC                 : 6
 GE                   : 45
@@ -125,6 +130,7 @@ LPAREN               : 6 71 72
 LSHIFT               : 49
 LSHIFT_ASSIGN        : 54
 LT                   : 42
+MAIN                 : 
 MINUS                : 34 51
 MINUS_ASSIGN         : 56
 MODULO               : 37
@@ -136,6 +142,7 @@ OR_ASSIGN            : 61
 PACKAGE              : 4
 PLUS                 : 33
 PLUS_ASSIGN          : 55
+PRINTLN              : 
 RAW_STRING           : 68
 RBRACE               : 6 27 28
 RBRACKET             : 
@@ -146,6 +153,7 @@ RSHIFT_ASSIGN        :
 SEMI                 : 22 63
 STRING_LITERAL       : 5 67
 STRING_TYPE          : 25
+SUMAR                : 
 TIMES                : 35
 TIMES_ASSIGN         : 57
 TYPE                 : 

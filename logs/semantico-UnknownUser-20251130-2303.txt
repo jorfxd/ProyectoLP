@@ -1,0 +1,28 @@
+============================================================
+  REPORTE DE ANÁLISIS SEMÁNTICO
+============================================================
+
+Usuario: UnknownUser
+Fecha: 2025-11-30 23:03:59
+
+TABLA DE SÍMBOLOS:
+------------------------------------------------------------
+  y: INT_TYPE
+  resultado: STRING_TYPE
+
+============================================================
+ERRORES SEMÁNTICOS DETECTADOS:
+============================================================
+
+1. ERROR SEMÁNTICO: Variable 'sumar' no declarada
+2. ERROR SEMÁNTICO: Variable 'a' no declarada
+3. ERROR SEMÁNTICO: Variable 'b' no declarada
+4. ERROR SEMÁNTICO: Variable 'x' no declarada
+5. ERROR SEMÁNTICO: Variable 'sumar' no declarada
+6. ERROR SEMÁNTICO: Variable 'x' no declarada
+7. ERROR SEMÁNTICO: Variable 'Printf' no declarada
+8. ERROR SEMÁNTICO: Variable 'x' no declarada
+9. ERROR SEMÁNTICO: Variable 'time' no declarada
+10. ERROR SEMÁNTICO: Variable 'Now' no declarada
+
+Total de errores: 10
